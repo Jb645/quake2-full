@@ -905,6 +905,11 @@ void Cmd_PlayerList_f(edict_t *ent)
 ClientCommand
 =================
 */
+void Cmd_Testing_(edict_t *ent) {
+	gi.cprintf(ent, PRINT_HIGH, "testing commands\n");
+	return;
+}
+
 void ClientCommand (edict_t *ent)
 {
 	char	*cmd;
@@ -913,6 +918,11 @@ void ClientCommand (edict_t *ent)
 		return;		// not fully in game yet
 
 	cmd = gi.argv(0);
+
+	if (Q_stricmp(cmd, "test") == 0) {
+		Cmd_Testing_(ent);
+		return;
+	}
 
 	if (Q_stricmp (cmd, "players") == 0)
 	{
@@ -943,8 +953,8 @@ void ClientCommand (edict_t *ent)
 	if (level.intermissiontime)
 		return;
 
-	if (Q_stricmp (cmd, "use") == 0)
-		Cmd_Use_f (ent);
+	if (Q_stricmp(cmd, "use") == 0)
+		Cmd_Use_f(ent);
 	else if (Q_stricmp (cmd, "drop") == 0)
 		Cmd_Drop_f (ent);
 	else if (Q_stricmp (cmd, "give") == 0)

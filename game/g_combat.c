@@ -93,7 +93,6 @@ void Killed (edict_t *targ, edict_t *inflictor, edict_t *attacker, int damage, v
 {
 	if (targ->health < -999)
 		targ->health = -999;
-
 	targ->enemy = attacker;
 
 	if ((targ->svflags & SVF_MONSTER) && (targ->deadflag != DEAD_DEAD))
@@ -118,6 +117,11 @@ void Killed (edict_t *targ, edict_t *inflictor, edict_t *attacker, int damage, v
 
 	if ((targ->svflags & SVF_MONSTER) && (targ->deadflag != DEAD_DEAD))
 	{
+		gi.bprintf(PRINT_HIGH, "in death flag\n");
+		if (attacker->client != NULL) {
+			gi.bprintf(PRINT_HIGH, "in client\n");
+			PlayerGainsSouls(attacker);
+		}
 		targ->touch = NULL;
 		monster_death_use (targ);
 	}

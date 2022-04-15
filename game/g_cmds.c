@@ -905,9 +905,68 @@ void Cmd_PlayerList_f(edict_t *ent)
 ClientCommand
 =================
 */
-void Cmd_Testing_(edict_t *ent) {
-	gi.cprintf(ent, PRINT_HIGH, "testing commands\n");
-	return;
+void Cmd_Testing_(edict_t* ent) {
+	gi.bprintf(PRINT_HIGH, "%d total xp to next Level\n", ent->client->pers.ballista.SoulCostToLevel);
+	gi.bprintf(PRINT_MEDIUM, "%d currentform\n", ent->client->pers.ballista.currentForm);
+}
+
+void EvolveWeapon() {
+
+}
+
+void LevelUpWeapons(edict_t* ent) {
+	if (ent->client == NULL) return;
+	 
+	int souls=0;
+	int cost = 0;
+	souls = ent->client->pers.playersouls;
+	switch (ent->client->pers.currentweaponForm)
+	{
+	case SWORD:
+		cost = ent->client->pers.sword.SoulCostToLevel;
+		break;
+	case SPEAR:
+		cost = ent->client->pers.spear.SoulCostToLevel;
+		break;
+	case HAMMER:
+		cost = ent->client->pers.hammer.SoulCostToLevel;
+		break;
+	case SUPER_HAMMER:
+		cost = ent->client->pers.superHammer.SoulCostToLevel;
+		break;
+	case DAGGERS:
+		cost = ent->client->pers.daggers.SoulCostToLevel;
+		break;
+	case BALLISTA:
+		cost = ent->client->pers.ballista.SoulCostToLevel;
+		break;
+	case SUPER_BALLISTA:
+		cost = ent->client->pers.superBallista.SoulCostToLevel;
+		break;
+	case CANON:
+		cost = ent->client->pers.canon.SoulCostToLevel;
+		break;
+	case BOW:
+		cost = ent->client->pers.bow.SoulCostToLevel;
+		break;
+	case MAGE_HAND:
+		cost = ent->client->pers.mageHand.SoulCostToLevel;
+		break;
+	case SHIELD:
+		cost = ent->client->pers.shield.SoulCostToLevel;
+		break;
+	default:
+		gi.bprintf(PRINT_HIGH, "in default\n");
+		break;
+	}
+
+	if (souls >= cost) {
+		gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+		//add code to upgrade weapon and increase cost of upgrade
+	}
+	else {
+		gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+	}
 }
 
 void ClientCommand (edict_t *ent)
@@ -921,6 +980,11 @@ void ClientCommand (edict_t *ent)
 
 	if (Q_stricmp(cmd, "test") == 0) {
 		Cmd_Testing_(ent);
+		return;
+	}
+
+	if (Q_stricmp(cmd, "levelUp") == 0) {
+		LevelUpWeapons(ent);
 		return;
 	}
 

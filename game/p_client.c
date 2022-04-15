@@ -604,6 +604,7 @@ This is only called when the game first initializes in single player,
 but is called after each death and level change in deathmatch
 ==============
 */
+
 void InitClientPersistant (gclient_t *client)
 {
 	gitem_t		*item;
@@ -627,8 +628,92 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.max_slugs		= 50;
 
 	client->pers.connected = true;
+
+	//Gluttony Mod --
+	int weaponLevel = 0;
+	int currentSoulNumber = 0;
+	int SoulCostToLevel = 10;
+	// sword
+	client->pers.sword.level = weaponLevel;
+	client->pers.sword.SoulCostToLevel = SoulCostToLevel;
+	client->pers.sword.currentForm = SWORD;
+	client->pers.sword.lastForm = NON;
+	client->pers.sword.nextForm = SPEAR;
+	client->pers.currentweaponForm = SWORD;
+	// spear
+	client->pers.spear.level = weaponLevel;
+	client->pers.sword.SoulCostToLevel = SoulCostToLevel;
+	client->pers.spear.currentForm = SPEAR;
+	client->pers.spear.lastForm = SWORD;
+	client->pers.spear.nextForm = HAMMER;
+	// hammer
+	client->pers.hammer.level = weaponLevel;
+	client->pers.hammer.SoulCostToLevel = SoulCostToLevel;
+	client->pers.hammer.currentForm = HAMMER;
+	client->pers.hammer.lastForm = SPEAR;
+	client->pers.hammer.nextForm = SUPER_HAMMER;
+	// superHammer
+	client->pers.superHammer.level = weaponLevel;
+	client->pers.superHammer.SoulCostToLevel = SoulCostToLevel;
+	client->pers.superHammer.currentForm = SUPER_HAMMER;
+	client->pers.superHammer.lastForm = HAMMER;
+	client->pers.superHammer.nextForm = DAGGERS;
+	// Daggers
+	client->pers.daggers.level = weaponLevel;
+	client->pers.daggers.SoulCostToLevel = SoulCostToLevel;
+	client->pers.daggers.currentForm = DAGGERS;
+	client->pers.daggers.lastForm = SUPER_HAMMER;
+	client->pers.daggers.nextForm = BALLISTA;
+	// ballista
+	client->pers.ballista.level = weaponLevel;
+	client->pers.ballista.SoulCostToLevel = SoulCostToLevel;
+	client->pers.ballista.currentForm = BALLISTA;
+	client->pers.ballista.lastForm = DAGGERS;
+	client->pers.ballista.nextForm = SUPER_BALLISTA;
+	// superballista
+	client->pers.superBallista.level = weaponLevel;
+	client->pers.superBallista.SoulCostToLevel = SoulCostToLevel;
+	client->pers.superBallista.currentForm = SUPER_BALLISTA;
+	client->pers.superBallista.lastForm = BALLISTA;
+	client->pers.superBallista.nextForm = CANON;
+	// canon
+	client->pers.canon.level = weaponLevel;
+	client->pers.canon.SoulCostToLevel = SoulCostToLevel;
+	client->pers.canon.currentForm = CANON;
+	client->pers.canon.lastForm = SUPER_BALLISTA;
+	client->pers.canon.nextForm = BOW;
+	// bow
+	client->pers.bow.level = weaponLevel;
+	client->pers.bow.SoulCostToLevel = SoulCostToLevel;
+	client->pers.bow.currentForm = BOW;
+	client->pers.bow.lastForm = CANON;
+	client->pers.bow.nextForm = MAGE_HAND;
+	// mageHand
+	client->pers.mageHand.level = weaponLevel;
+
+	client->pers.mageHand.SoulCostToLevel = SoulCostToLevel;
+	client->pers.mageHand.currentForm = MAGE_HAND;
+	client->pers.mageHand.lastForm = BOW;
+	client->pers.mageHand.nextForm = SHIELD;
+	// shield
+	client->pers.shield.level = weaponLevel;
+	client->pers.shield.SoulCostToLevel = SoulCostToLevel;
+	client->pers.shield.currentForm = SHIELD;
+	client->pers.shield.lastForm = MAGE_HAND;
+	client->pers.shield.nextForm = SWORD;
+	
+	//Gluttony Mod End
+}
+// GLuttony MOD
+void PlayerGainsSouls(edict_t *attacker) {
+	
+	attacker->client->pers.playersouls += 10;
+	gi.bprintf(PRINT_HIGH, "--------------------------------------\n");
+	gi.bprintf(PRINT_HIGH, "+10 Souls\n");
 }
 
+
+//Gluttony Mod
 
 void InitClientResp (gclient_t *client)
 {

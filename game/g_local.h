@@ -814,6 +814,11 @@ void ChaseNext(edict_t *ent);
 void ChasePrev(edict_t *ent);
 void GetChaseTarget(edict_t *ent);
 
+//
+// gluttony mod
+//
+void PlayerGainsSouls(edict_t* inflictor);
+void LevelUpWeapons(edict_t* client);
 //============================================================================
 
 // client_t->anim_priority
@@ -826,6 +831,36 @@ void GetChaseTarget(edict_t *ent);
 #define	ANIM_REVERSE	6
 
 
+//11 weapon forms (replace old weapons with new weapons)
+
+enum WeaponForms
+{
+	SWORD, //Blaster- sword 
+	SPEAR, //HyperBlaster - Spear
+	HAMMER, //Shotgun- hammer 
+	SUPER_HAMMER, //Super Shotgun - super Hammer
+	DAGGERS, //Machine gun - Daggers
+	BALLISTA, //Rocket launcher - Balista
+	SUPER_BALLISTA, //Chain Gun - super ballista
+	CANON, //Grenade Launcher - Canon
+	BOW, //Rail Gun - Bow
+	MAGE_HAND, //BFG10K - Mage Hand
+	SHIELD, //Grenades - Shield
+	NON
+};
+//Gluttony Mod
+typedef struct
+{
+	int level;
+	int SoulCostToLevel;
+	enum WeaponForms currentForm;
+	enum WeaponForms nextForm;
+	enum WeaponForms lastForm;
+
+	
+} gluttonyState;
+
+//Gluttony Mod End
 // client data that stays across multiple level loads
 typedef struct
 {
@@ -862,6 +897,13 @@ typedef struct
 	int			helpchanged;
 
 	qboolean	spectator;			// client is a spectator
+
+	//Gluttony Mod
+	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, bow, mageHand, shield;
+	int playersouls;
+	enum WeaponForms currentweaponForm;
+	//Gluttony Mod End
+
 } client_persistant_t;
 
 // client data that stays across deathmatch respawns
@@ -959,6 +1001,7 @@ struct gclient_s
 
 	edict_t		*chase_target;		// player we are chasing
 	qboolean	update_chase;		// need to update chase info?
+
 };
 
 

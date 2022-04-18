@@ -1,0 +1,26 @@
+Change HUD:
+-------------------
+add 
+	pic_xp int to g_local.h 
+to level_locals_t
+-------------------
+add 
+	ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
+	ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
+to G_SetStats
+-------------------
+add
+	#define STAT_XP_ICON			18		//mod starts here
+	#define STAT_XP					19
+to q_shared.h 
+-------------------
+add
+// timer2			// New
+"if 18 "			// New. If STAT_XP_ICON is not zero, then do
+"	yb	-48 "		// New  //controls y position of both
+"	xr	-58 "		// New  //controls x position of string
+"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 17
+"	xr	-24 "		// New  //controls the x position of icon
+"	pic	18 "		// New. Display icon
+"endif "			// New
+to g_spawn.c in *single_statusbar

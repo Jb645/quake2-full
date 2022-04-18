@@ -1,1 +1,2 @@
 C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\release\gamex86.dll
+D:\GitHub\IT266-GameMod\quake2-full\game\release\gamex86.dll

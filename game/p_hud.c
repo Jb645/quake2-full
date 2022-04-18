@@ -380,11 +380,17 @@ void G_SetStats (edict_t *ent)
 	int			index, cells;
 	int			power_armor_type;
 
+	
+
 	//
 	// health
 	//
 	ent->client->ps.stats[STAT_HEALTH_ICON] = level.pic_health;
 	ent->client->ps.stats[STAT_HEALTH] = ent->health;
+
+	//testing
+	ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
+	ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
 
 	//
 	// ammo

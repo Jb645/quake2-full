@@ -688,13 +688,31 @@ char *single_statusbar =
 "	yb	-50 "
 "endif "
 
+//// timer
+//"if 9 "
+//"	xv	262 "
+//"	num	2	10 "
+//"	xv	296 "
+//"	pic	9 "
+//"endif "
+
 // timer
 "if 9 "
-"	xv	262 "
+"	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
+"	xr	-58 "		// New. Set X-cursor -58 pixels from physical screen right
 "	num	2	10 "
-"	xv	296 "
+"	xr	-24 "		// New
 "	pic	9 "
 "endif "
+
+// XP			// New
+"if 18 "			// New. If STAT_XP_ICON is not zero, then do
+"	yb	-48 "		// New  //controls y position of both
+"	xr	-58 "		// New  //controls x position of string
+"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 17
+"	xr	-24 "		// New  //controls the x position of icon
+"	pic	18 "		// New. Display icon
+"endif "			// New
 
 //  help / weapon icon 
 "if 11 "
@@ -849,6 +867,9 @@ void SP_worldspawn (edict_t *ent)
 	level.pic_health = gi.imageindex ("i_health");
 	gi.imageindex ("help");
 	gi.imageindex ("field_3");
+
+	//mod
+	level.pic_XP = gi.imageindex("i_XP");
 
 	if (!st.gravity)
 		gi.cvar_set("sv_gravity", "800");

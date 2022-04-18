@@ -338,6 +338,9 @@ typedef struct
 	int			body_que;			// dead bodies
 
 	int			power_cubes;		// ugly necessity for coop
+
+	//MOD GLUTTONY
+	int			pic_XP;
 } level_locals_t;
 
 

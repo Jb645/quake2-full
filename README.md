@@ -69,7 +69,7 @@ The Gluttony Mod is a mod that changes all weapons into gluttony weapons.<br>
 
 # How to Install the mod
 <ol>
-  <li>Click on Code and download the mod branch as a zip or pull the branch in your computer using the HTTP</li>
+  <li>Click on Code and download the mod branch as a zip or clone the Mod branch in your computer using the HTTP in code using git bash(git clone http)</li>
   <li>Open the game folder usually found in steam at "C:\Program Files (x86)\Steam\steamapps\common\Quake 2" and make a folder for the mod named "mod"</li>
   <li>Extract the zip or open the branch in your computer</li>
   <li>Copy the files inside the folder in the zip or branch named "customMod" and put them inside your mod folder</li>

@@ -1060,6 +1060,10 @@ void ClientEndServerFrame (edict_t *ent)
 		G_SetSpectatorStats(ent);
 	else
 		G_SetStats (ent);
+
+
+	G_SetSoulAllocationScreen(ent);
+
 	G_CheckChaseStats(ent);
 
 	G_SetClientEvent (ent);

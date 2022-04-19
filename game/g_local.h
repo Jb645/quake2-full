@@ -822,6 +822,7 @@ void GetChaseTarget(edict_t *ent);
 //
 void PlayerGainsSouls(edict_t* inflictor);
 void LevelUpWeapons(edict_t* client);
+void G_SetSoulAllocationScreen(edict_t* ent);
 //============================================================================
 
 // client_t->anim_priority
@@ -904,6 +905,7 @@ typedef struct
 	//Gluttony Mod
 	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, bow, mageHand, shield;
 	int playersouls;
+	qboolean showSoulAllocation;
 	enum WeaponForms currentweaponForm;
 	//Gluttony Mod End
 

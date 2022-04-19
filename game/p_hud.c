@@ -388,10 +388,6 @@ void G_SetStats (edict_t *ent)
 	ent->client->ps.stats[STAT_HEALTH_ICON] = level.pic_health;
 	ent->client->ps.stats[STAT_HEALTH] = ent->health;
 
-	//testing
-	ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
-	ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
-
 	//
 	// ammo
 	//
@@ -526,6 +522,30 @@ void G_SetStats (edict_t *ent)
 		ent->client->ps.stats[STAT_HELPICON] = 0;
 
 	ent->client->ps.stats[STAT_SPECTATOR] = 0;
+}
+
+//MOD
+
+void G_SetSoulAllocationScreen(edict_t* ent) {
+	gclient_t* cl;
+	cl = ent->client;
+
+	if (cl->pers.showSoulAllocation) {
+		ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
+		ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
+	}
+	else {
+		ent->client->ps.stats[STAT_XP_ICON] = 0;
+		ent->client->ps.stats[STAT_XP] = 0;
+
+	}
+
+	//learn that i can use com_sprintf to edit the layout
+	//ned to add after
+	//gi.WriteByte (svc_layout);
+	//gi.WriteString(string);
+	//gi.unicast(ent, true);
+	
 }
 
 /*

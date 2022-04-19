@@ -688,14 +688,6 @@ char *single_statusbar =
 "	yb	-50 "
 "endif "
 
-//// timer
-//"if 9 "
-//"	xv	262 "
-//"	num	2	10 "
-//"	xv	296 "
-//"	pic	9 "
-//"endif "
-
 // timer
 "if 9 "
 "	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
@@ -707,12 +699,19 @@ char *single_statusbar =
 
 // XP			// New
 "if 18 "			// New. If STAT_XP_ICON is not zero, then do
-"	yb	-48 "		// New  //controls y position of both
+"	yb	-48 "		// New  //controls y position of string
 "	xr	-58 "		// New  //controls x position of string
-"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 17
+"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
 "	xr	-24 "		// New  //controls the x position of icon
 "	pic	18 "		// New. Display icon
 "endif "			// New
+
+// Status Screen
+"if 20 "
+"	xv 50"
+"	yv 50"
+"	string \"Player\" "
+"endif"
 
 //  help / weapon icon 
 "if 11 "

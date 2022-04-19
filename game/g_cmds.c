@@ -906,8 +906,19 @@ ClientCommand
 =================
 */
 void Cmd_Testing_(edict_t* ent) {
-	gi.bprintf(PRINT_HIGH, "%d total xp to next Level\n", ent->client->pers.ballista.SoulCostToLevel);
-	gi.bprintf(PRINT_MEDIUM, "%d currentform\n", ent->client->pers.ballista.currentForm);
+	gclient_t* cl;
+	cl = ent->client;
+
+
+	gi.bprintf(PRINT_HIGH, "%d total xp to next Level\n",cl->pers.ballista.SoulCostToLevel);
+	gi.bprintf(PRINT_MEDIUM, "%d currentform\n", cl->pers.ballista.currentForm);
+
+	if (cl->pers.showSoulAllocation) {
+		cl->pers.showSoulAllocation = false;
+	}
+	else {
+		cl->pers.showSoulAllocation = true;
+	}
 }
 
 void EvolveWeapon() {

@@ -908,8 +908,6 @@ ClientCommand
 void Cmd_Testing_(edict_t* ent) {
 	gclient_t* cl;
 	cl = ent->client;
-
-
 	gi.bprintf(PRINT_HIGH, "%d total xp to next Level\n",cl->pers.ballista.SoulCostToLevel);
 	gi.bprintf(PRINT_MEDIUM, "%d currentform\n", cl->pers.ballista.currentForm);
 

@@ -708,10 +708,17 @@ char *single_statusbar =
 
 // Status Screen
 "if 20 "
-"	xv 50"
+"	xv 50 "
 "	yv 50"
-"	string \"Player\" "
-"endif"
+"	pic 20"
+"endif "
+
+// Mod Help Menu
+"if 21"
+"	xv 50 "
+"	yv 50"
+"	pic 21"
+"endif "
 
 //  help / weapon icon 
 "if 11 "

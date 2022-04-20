@@ -341,6 +341,8 @@ typedef struct
 
 	//MOD GLUTTONY
 	int			pic_XP;
+	int			pic_SoulAllocationMenu;
+	int			pic_HelpMenuMod;
 } level_locals_t;
 
 

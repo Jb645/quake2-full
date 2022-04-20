@@ -533,18 +533,17 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 	if (cl->pers.showSoulAllocation) {
 		ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
 		ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
+		cl->ps.stats[STAT_SCREEN] = gi.imageindex("i_SoulAllocationMenu");
+		cl->ps.stats[STAT_HELPMODMENU] = gi.imageindex("i_HelpMenu");
+
 	}
 	else {
 		ent->client->ps.stats[STAT_XP_ICON] = 0;
 		ent->client->ps.stats[STAT_XP] = 0;
+		cl->ps.stats[STAT_SCREEN] = 0;
+		cl->ps.stats[STAT_HELPMODMENU] = 0;
 
 	}
-
-	//learn that i can use com_sprintf to edit the layout
-	//ned to add after
-	//gi.WriteByte (svc_layout);
-	//gi.WriteString(string);
-	//gi.unicast(ent, true);
 	
 }
 

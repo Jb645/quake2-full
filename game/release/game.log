@@ -1,17 +1,21 @@
 ﻿  p_hud.c
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\p_hud.c(234,11): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\p_hud.c(245,10): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\p_hud.c(425): warning C4701: potentially uninitialized local variable 'cells' used
+D:\GitHub\IT266-GameMod\quake2-full\game\p_hud.c(234,11): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\IT266-GameMod\quake2-full\game\p_hud.c(245,10): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\IT266-GameMod\quake2-full\game\p_hud.c(425): warning C4701: potentially uninitialized local variable 'cells' used
      Creating library .\..\release\gamex86.lib and object .\..\release\gamex86.exp
-  game.vcxproj -> C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\release\gamex86.dll
+  game.vcxproj -> D:\GitHub\IT266-GameMod\quake2-full\game\release\gamex86.dll
   ..\customMod\Adds\config.cfg
+  ..\customMod\Adds\pics\Allocation Souls.xcf
+  ..\customMod\Adds\pics\i_HelpMenu.pcx
+  ..\customMod\Adds\pics\i_SoulAllocationMenu.pcx
   ..\customMod\Adds\pics\i_XP.pcx
   ..\customMod\Adds\pics\m_main_game.pcx
+  ..\customMod\Adds\pics\SouilAllocation.xcf
   ..\customMod\Adds\pics\XP.xcf
   ..\customMod\Adds\save\current\game.ssv
   ..\customMod\Adds\save\current\server.ssv
   ..\customMod\Adds\save\save0\game.ssv
   ..\customMod\Adds\save\save0\server.ssv
-  8 File(s) copied
+  12 File(s) copied
   release\gamex86.dll
   1 File(s) copied

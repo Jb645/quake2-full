@@ -908,6 +908,7 @@ typedef struct
 	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, bow, mageHand, shield;
 	int playersouls;
 	qboolean showSoulAllocation;
+	qboolean showHelpModMenu;
 	enum WeaponForms currentweaponForm;
 	//Gluttony Mod End
 

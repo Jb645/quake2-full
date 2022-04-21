@@ -1011,7 +1011,7 @@ typedef enum
 #define STAT_XP_ICON			18		//mod starts here
 #define STAT_XP					19
 #define STAT_SCREEN				20
-#define STAT_HELPMODMENU		21
+#define STAT_HELP_MOD_MENU		21
 
 
 

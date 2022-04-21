@@ -905,7 +905,7 @@ void Cmd_PlayerList_f(edict_t *ent)
 ClientCommand
 =================
 */
-void Cmd_Testing_(edict_t* ent) {
+void Cmd_SoulSetUp_f(edict_t* ent) {
 	gclient_t* cl;
 	cl = ent->client;
 	gi.bprintf(PRINT_HIGH, "%d total xp to next Level\n",cl->pers.ballista.SoulCostToLevel);
@@ -919,8 +919,18 @@ void Cmd_Testing_(edict_t* ent) {
 	}
 }
 
-void EvolveWeapon() {
+void Cmd_HelpModMenu_f(edict_t* ent) {
+	gclient_t* cl;
+	cl = ent->client;
 
+	if (ent->client->pers.showHelpModMenu) {
+		gi.bprintf(PRINT_HIGH, "showHelpMenu false");
+		ent->client->pers.showHelpModMenu = false;
+	}
+	else {
+		gi.bprintf(PRINT_HIGH, "showHelpMenu true");
+		ent->client->pers.showHelpModMenu = true;
+	}
 }
 
 void LevelUpWeapons(edict_t* ent) {
@@ -987,11 +997,14 @@ void ClientCommand (edict_t *ent)
 
 	cmd = gi.argv(0);
 
-	if (Q_stricmp(cmd, "test") == 0) {
-		Cmd_Testing_(ent);
+	if (Q_stricmp(cmd, "soulAllocationMenu") == 0) {
+		Cmd_SoulSetUp_f(ent);
 		return;
 	}
-
+	if (Q_stricmp(cmd, "helpModMenu") == 0) {
+		Cmd_HelpModMenu_f(ent);
+		return;
+	}
 	if (Q_stricmp(cmd, "levelUp") == 0) {
 		LevelUpWeapons(ent);
 		return;

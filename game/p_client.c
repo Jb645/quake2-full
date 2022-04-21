@@ -633,6 +633,7 @@ void InitClientPersistant (gclient_t *client)
 	int weaponLevel = 0;
 	int currentSoulNumber = 0;
 	int SoulCostToLevel = 10;
+	client->pers.showHelpModMenu = true;
 	// sword
 	client->pers.sword.level = weaponLevel;
 	client->pers.sword.SoulCostToLevel = SoulCostToLevel;

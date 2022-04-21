@@ -1061,8 +1061,8 @@ void ClientEndServerFrame (edict_t *ent)
 	else
 		G_SetStats (ent);
 
-
 	G_SetSoulAllocationScreen(ent);
+
 
 	G_CheckChaseStats(ent);
 

@@ -533,19 +533,25 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 	if (cl->pers.showSoulAllocation) {
 		ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
 		ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
-		cl->ps.stats[STAT_SCREEN] = gi.imageindex("i_SoulAllocationMenu");
-		cl->ps.stats[STAT_HELPMODMENU] = gi.imageindex("i_HelpMenu");
-
+		ent->client->ps.stats[STAT_SCREEN] = level.pic_SoulAllocationMenu;
+		
 	}
 	else {
 		ent->client->ps.stats[STAT_XP_ICON] = 0;
 		ent->client->ps.stats[STAT_XP] = 0;
-		cl->ps.stats[STAT_SCREEN] = 0;
-		cl->ps.stats[STAT_HELPMODMENU] = 0;
+		ent->client->ps.stats[STAT_SCREEN] = 0;
+		//ent->client->ps.stats[STAT_HELP_MOD_MENU] = 0;
+	}
 
+	if (ent->client->pers.showHelpModMenu) {
+		ent->client->ps.stats[STAT_HELP_MOD_MENU] = level.pic_HelpMenuMod;
+	}
+	else {
+		ent->client->ps.stats[STAT_HELP_MOD_MENU] = 0;
 	}
 	
 }
+
 
 /*
 ===============

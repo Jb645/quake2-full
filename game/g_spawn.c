@@ -696,27 +696,46 @@ char *single_statusbar =
 "	xr	-24 "		// New
 "	pic	9 "
 "endif "
+			// New
+
+		
+		
+"if 20 "
+"	xv -150 yv 50 pic 20"
+//Weapons
+"	xv -130 yv 98 string  \"1 Sword\""
+"	xv -130 yv 108 string \"2 Spear\""
+"	xv -130 yv 118 string \"3 HM\""
+"	xv -130 yv 128 string \"4 SP-HM\""
+"	xv -130 yv 138 string \"5 Daggers\""
+"	xv -130 yv 148 string \"6 BST\""
+"	xv -130 yv 158 string \"7 SP-BST\""
+"	xv -130 yv 168 string \"8 Canon\""
+"	xv -130 yv 178 string \"9 Bow\""
+"	xv -130 yv 188 string \"10 MageHD\""
+"	xv -130 yv 198 string \"11 Shield\""
+//Player Attributes
+"	xv -28 yv 98 string  \"1 BS Attack\""
+"	xv -28 yv 108 string \"2 Speed\""
+"	xv -28 yv 118 string \"3 Crit %\""
+"	xv -28 yv 128 string \"4 Crit Dmg\""
+"	xv -28 yv 138 string \"5 Soul Gain\""
+
+"endif "
 
 // XP			// New
 "if 18 "			// New. If STAT_XP_ICON is not zero, then do
-"	yb	-48 "		// New  //controls y position of string
-"	xr	-58 "		// New  //controls x position of string
+"	yv	160 "		// New  //controls y position of string
+"	xv	-12 "		// New  //controls x position of string
 "	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
-"	xr	-24 "		// New  //controls the x position of icon
 "	pic	18 "		// New. Display icon
-"endif "			// New
-
-// Status Screen
-"if 20 "
-"	xv 50 "
-"	yv 50"
-"	pic 20"
 "endif "
 
+// Status Screen
 // Mod Help Menu
 "if 21"
-"	xv 50 "
-"	yv 50"
+"	xv 156"
+"	yv 50 "
 "	pic 21"
 "endif "
 
@@ -876,6 +895,8 @@ void SP_worldspawn (edict_t *ent)
 
 	//mod
 	level.pic_XP = gi.imageindex("i_XP");
+	level.pic_HelpMenuMod = gi.imageindex("i_HelpModMenu");
+	level.pic_SoulAllocationMenu = gi.imageindex("i_SoulAllocationMenu");
 
 	if (!st.gravity)
 		gi.cvar_set("sv_gravity", "800");

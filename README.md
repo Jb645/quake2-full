@@ -67,7 +67,10 @@ The Gluttony Mod is a mod that changes all weapons into gluttony weapons.<br>
 </table>
 
 # How to Play Mod
-Kill enemies to gain souls and open the allocation menu with 'R' and allocate those souls to your favorite weapon or to one of the player attributes by clicking on it. Every weapon will evolve after a certain amount of souls will be gained and evolve to a new form, as you keep adding more souls it will gain more forms.
+At the Begining of the game there is a help menu you can turn off my pressing 'H' it will tell you what you can do.<br>
+In this game you will Kill enemies to gain souls and open the allocation menu with 'R' and allocate those souls to your favorite weapon or to one of the player attributes by pressing K(Weapon) or L(Player) and then 1-11 to chose the weapon or attribute to upgrade.<br>
+You can see the amount of souls you have in the help menu too.<br>
+Every weapon will evolve after a certain amount of souls will be gained and evolve to a new form, as you keep adding more souls it will gain more forms.<br>
 
 # How to Install the mod
 <ol>

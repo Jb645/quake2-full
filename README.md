@@ -49,8 +49,8 @@ The Gluttony Mod is a mod that changes all weapons into gluttony weapons.<br>
     <td>the damage muliplier between all weapons</td>
   </tr>
   <tr>
-    <td>Speed</td>
-    <td>the speed of the player's movement</td>
+    <td>Max Health</td>
+    <td>Player Max Health</td>
   </tr>
     <tr>
     <td>Critical Chance</td>

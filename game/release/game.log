@@ -3,9 +3,9 @@ C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.
 C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(433,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(543,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(544,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(855,10): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(862,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(865,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(884,10): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(891,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(894,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
      Creating library .\..\release\gamex86.lib and object .\..\release\gamex86.exp
   game.vcxproj -> C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\release\gamex86.dll
   ..\customMod\Adds\config.cfg
@@ -13,13 +13,12 @@ C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.
   ..\customMod\Adds\pics\i_HelpModMenu.pcx
   ..\customMod\Adds\pics\i_SoulAllocationMenu.pcx
   ..\customMod\Adds\pics\i_XP.pcx
-  ..\customMod\Adds\pics\m_main_game.pcx
   ..\customMod\Adds\pics\SouilAllocation.xcf
   ..\customMod\Adds\pics\XP.xcf
   ..\customMod\Adds\save\current\game.ssv
   ..\customMod\Adds\save\current\server.ssv
   ..\customMod\Adds\save\save0\game.ssv
   ..\customMod\Adds\save\save0\server.ssv
-  12 File(s) copied
+  11 File(s) copied
   release\gamex86.dll
   1 File(s) copied

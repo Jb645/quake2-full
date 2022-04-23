@@ -714,9 +714,37 @@ char *single_statusbar =
 "	xv -130 yv 178 string \"9 Bow\""
 "	xv -130 yv 188 string \"10 MageHD\""
 "	xv -130 yv 198 string \"11 Shield\""
+
+//Weapons Visual
+
+
+
+"	xv -340 yv -139 string  \"1\""
+"	xv -300 yv -152 num 2  22"
+"	xv -340 yv -113 string  \"2\""
+"	xv -300 yv -126 num 2  22"
+
+//"	xv -340 yv -  string  \"3\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"4\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"5\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"6\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"7\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"8\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"9\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"10\""
+//"	xv -300 yv -  num 2  22"
+//"	xv -340 yv -  string  \"11\""
+
 //Player Attributes
 "	xv -28 yv 98 string  \"1 BS Attack\""
-"	xv -28 yv 108 string \"2 Speed\""
+"	xv -28 yv 108 string \"2 Max HP\""
 "	xv -28 yv 118 string \"3 Crit %\""
 "	xv -28 yv 128 string \"4 Crit Dmg\""
 "	xv -28 yv 138 string \"5 Soul Gain\""
@@ -726,8 +754,9 @@ char *single_statusbar =
 // XP			// New
 "if 18 "			// New. If STAT_XP_ICON is not zero, then do
 "	yv	160 "		// New  //controls y position of string
-"	xv	-12 "		// New  //controls x position of string
+"	xv	-10 "		// New  //controls x position of string
 "	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
+"	xv	24"
 "	pic	18 "		// New. Display icon
 "endif "
 

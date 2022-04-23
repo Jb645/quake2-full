@@ -1012,10 +1012,11 @@ typedef enum
 #define STAT_XP					19
 #define STAT_SCREEN				20
 #define STAT_HELP_MOD_MENU		21
+#define STAT_SWORD_LEVEL		22		//WeaponsStart
 
 
 
-#define	MAX_STATS				32
+#define	MAX_STATS				64
 
 
 // dmflags->value flags

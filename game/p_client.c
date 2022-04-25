@@ -703,12 +703,22 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.shield.lastForm = MAGE_HAND;
 	client->pers.shield.nextForm = SWORD;
 	
+	//Player Attributes
+	client->pers.baseDamageMultiplier = 1;
+	client->pers.critChance = 1;
+	client->pers.critDamage = 1;
+	client->pers.maxHPMultiplier = 1;
+	client->pers.soulgainMultiplier = 1;
+
+
+
+
 	//Gluttony Mod End
 }
 // GLuttony MOD
 void PlayerGainsSouls(edict_t *attacker) {
-	
-	attacker->client->pers.playersouls += 10;
+	int bonusSouls = attacker->client->pers.soulgainMultiplier;
+	attacker->client->pers.playersouls += 10 * bonusSouls;
 	gi.bprintf(PRINT_HIGH, "--------------------------------------\n");
 	gi.bprintf(PRINT_HIGH, "+10 Souls\n");
 }

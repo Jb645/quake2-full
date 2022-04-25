@@ -227,6 +227,7 @@ enum svc_ops_e
 	svc_packetentities,			// [...]
 	svc_deltapacketentities,	// [...]
 	svc_frame
+
 };
 
 //==============================================

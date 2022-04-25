@@ -525,32 +525,283 @@ void G_SetStats (edict_t *ent)
 }
 
 //MOD
+char* single_Attributes_Weapon =
+
+"if 20 "
+"	xv -150 yv 50 pic 20"
+//weapons
+"	xv -130 yv 98 string  \"1 sword\""
+"	xv -130 yv 108 string \"2 spear\""
+"	xv -130 yv 118 string \"3 hm\""
+"	xv -130 yv 128 string \"4 sp-hm\""
+"	xv -130 yv 138 string \"5 daggers\""
+"	xv -130 yv 148 string \"6 bst\""
+"	xv -130 yv 158 string \"7 sp-bst\""
+"	xv -130 yv 168 string \"8 canon\""
+"	xv -130 yv 178 string \"9 bow\""
+"	xv -130 yv 188 string \"10 magehd\""
+"	xv -130 yv 198 string \"11 shield\""
+"endif"
+//weapons visual
+
+
+"if 22"
+"	xv -340 yv -150 string  \"1\""
+"	xv -330 yv -160 num 2  22"
+
+"	xv -340 yv -120 string  \"2\""
+"	xv -330 yv -130 num 2  23"
+
+"	xv -340 yv -90  string  \"3\""
+"	xv -330 yv -100  num 2  24"
+
+"	xv -340 yv -60  string  \"4\""
+"	xv -330 yv -70  num 2  25"
+
+"	xv -340 yv -30  string  \"5\""
+"	xv -330 yv -40  num 2  26"
+
+"	xv -340 yv 0  string  \"6\""
+"	xv -330 yv -10  num 2  27"
+
+"	xv -340 yv 30  string  \"7\""
+"	xv -330 yv 20  num 2  28"
+
+"	xv -340 yv 60  string  \"8\""
+"	xv -330 yv 50  num 2  29"
+
+"	xv -340 yv 90  string  \"9\""
+"	xv -330 yv 80  num 2  30"
+
+"	xv -340 yv 120  string  \"10\""
+"	xv -330 yv 110  num 2  31"
+
+"	xv -340 yv 150  string  \"11\""
+"	xv -330 yv 140  num 2  17"
+
+
+//player attributes
+"	xv -28 yv 98 string  \"1 bs attack\""
+"	xv -28 yv 108 string \"2 max hp\""
+"	xv -28 yv 118 string \"3 crit %\""
+"	xv -28 yv 128 string \"4 crit dmg\""
+"	xv -28 yv 138 string \"5 soul gain\""
+
+"endif "
+
+// XP			// New
+"if 18 "			// New. If STAT_XP_ICON is not zero, then do
+"	yv	160 "		// New  //controls y position of string
+"	xv	-44 "		// New  //controls x position of string
+"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
+"	xv	-10"
+"	pic	18 "		// New. Display icon
+"endif "
+
+// Status Screen
+// Mod Help Menu
+"if 21"
+"	xv 156"
+"	yv 50 "
+"	pic 21"
+"endif "
+;
+
+char* single_Attributes_Player =
+
+"if 20 "
+"	xv -150 yv 50 pic 20"
+//weapons
+"	xv -130 yv 98 string  \"1 sword\""
+"	xv -130 yv 108 string \"2 spear\""
+"	xv -130 yv 118 string \"3 hm\""
+"	xv -130 yv 128 string \"4 sp-hm\""
+"	xv -130 yv 138 string \"5 daggers\""
+"	xv -130 yv 148 string \"6 bst\""
+"	xv -130 yv 158 string \"7 sp-bst\""
+"	xv -130 yv 168 string \"8 canon\""
+"	xv -130 yv 178 string \"9 bow\""
+"	xv -130 yv 188 string \"10 magehd\""
+"	xv -130 yv 198 string \"11 shield\""
+"endif"
+
+//Player Attributes visual
+"if 22"
+"	xv -340 yv -150 string  \"1\""
+"	xv -330 yv -160 num 2  22"
+
+"	xv -340 yv -120 string  \"2\""
+"	xv -330 yv -130 num 2  23"
+
+"	xv -340 yv -90  string  \"3\""
+"	xv -330 yv -100  num 2  24"
+
+"	xv -340 yv -60  string  \"4\""
+"	xv -330 yv -70  num 2  25"
+
+"	xv -340 yv -30  string  \"5\""
+"	xv -330 yv -40  num 2  26"
+
+
+//player attributes
+"	xv -28 yv 98 string  \"1 bs attack\""
+"	xv -28 yv 108 string \"2 max hp\""
+"	xv -28 yv 118 string \"3 crit %\""
+"	xv -28 yv 128 string \"4 crit dmg\""
+"	xv -28 yv 138 string \"5 soul gain\""
+
+"endif "
+
+// XP			// New
+"if 18 "			// New. If STAT_XP_ICON is not zero, then do
+"	yv	160 "		// New  //controls y position of string
+"	xv	-44 "		// New  //controls x position of string
+"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
+"	xv	-10"
+"	pic	18 "		// New. Display icon
+"endif "
+
+// Status Screen
+// Mod Help Menu
+"if 21"
+"	xv 156"
+"	yv 50 "
+"	pic 21"
+"endif "
+;
+
+char* single_statusbar2 =
+"yb	-24 "
+
+// health
+"xv	0 "
+"hnum "
+"xv	50 "
+"pic 0 "
+
+// ammo
+"if 2 "
+"	xv	100 "
+"	anum "
+"	xv	150 "
+"	pic 2 "
+"endif "
+
+// armor
+"if 4 "
+"	xv	200 "
+"	rnum "
+"	xv	250 "
+"	pic 4 "
+"endif "
+
+// selected item
+"if 6 "
+"	xv	296 "
+"	pic 6 "
+"endif "
+
+"yb	-50 "
+
+// picked up item
+"if 7 "
+"	xv	0 "
+"	pic 7 "
+"	xv	26 "
+"	yb	-42 "
+"	stat_string 8 "
+"	yb	-50 "
+"endif "
+
+// timer
+"if 9 "
+"	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
+"	xr	-58 "		// New. Set X-cursor -58 pixels from physical screen right
+"	num	2	10 "
+"	xr	-24 "		// New
+"	pic	9 "
+"endif "
+// New
+
+//  help / weapon icon 
+"if 11 "
+"	xv	148 "
+"	pic	11 "
+"endif "
+;
 
 void G_SetSoulAllocationScreen(edict_t* ent) {
 	gclient_t* cl;
 	cl = ent->client;
-
-
-
 	if (cl->pers.showSoulAllocation) {
+		char* currentStatusBar = "";
+		switch (cl->pers.currentAttributeScreen)	
+		{
+		case PLAYER:
+			cl->ps.stats[STAT_SWORD_LEVEL] = cl->pers.baseDamageMultiplier;
+			cl->ps.stats[STAT_SPEAR_LEVEL] = cl->pers.maxHPMultiplier;
+			cl->ps.stats[STAT_HAMMER_LEVEL] = cl->pers.critChance;
+			cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = cl->pers.critDamage;
+			cl->ps.stats[STAT_DAGGERS_LEVEL] = cl->pers.soulgainMultiplier;
+			currentStatusBar = single_Attributes_Player;
+
+			break;
+		case WEAPON:
+			cl->ps.stats[STAT_SWORD_LEVEL] = cl->pers.sword.level;
+			cl->ps.stats[STAT_SPEAR_LEVEL] = cl->pers.spear.level;
+			cl->ps.stats[STAT_HAMMER_LEVEL] = cl->pers.hammer.level;
+			cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = cl->pers.superHammer.level;
+			cl->ps.stats[STAT_DAGGERS_LEVEL] = cl->pers.daggers.level;
+			cl->ps.stats[STAT_BALLISTA_LEVEL] = cl->pers.ballista.level;
+			cl->ps.stats[STAT_SPBALLISTA_LEVEL] = cl->pers.superBallista.level;
+			cl->ps.stats[STAT_CANON_LEVEL] = cl->pers.canon.level;
+			cl->ps.stats[STAT_BOW_LEVEL] = cl->pers.bow.level;
+			cl->ps.stats[STAT_MAGEHAND_LEVEL] = cl->pers.mageHand.level;
+			cl->ps.stats[STAT_SHIELD_LEVEL] = cl->pers.shield.level;
+			currentStatusBar = single_Attributes_Weapon;
+			// Weapons
+			break;
+		default:
+			currentStatusBar = single_statusbar2;
+			break;
+		}
+		gi.configstring(CS_STATUSBAR, currentStatusBar);
 		ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
 		ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
 		ent->client->ps.stats[STAT_SCREEN] = level.pic_SoulAllocationMenu;
 
-		// Weapons
-		cl->ps.stats[STAT_SWORD_LEVEL] = cl->pers.sword.level;
+
+		
 
 		//Attributes
+
 	}
 	else {
+		gi.configstring(CS_STATUSBAR, single_statusbar2);
 		ent->client->ps.stats[STAT_XP_ICON] = 0;
 		ent->client->ps.stats[STAT_XP] = 0;
 		ent->client->ps.stats[STAT_SCREEN] = 0;
 
 		// Weapons
-		cl->ps.stats[STAT_SWORD_LEVEL] = 0;
+		//cl->ps.stats[STAT_SWORD_LEVEL] = 0;
+		//cl->ps.stats[STAT_SPEAR_LEVEL] = 0;
+		//cl->ps.stats[STAT_HAMMER_LEVEL] = 0;
+		//cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = 0;
+		//cl->ps.stats[STAT_DAGGERS_LEVEL] = 0;
+		//cl->ps.stats[STAT_BALLISTA_LEVEL] = 0;
+		//cl->ps.stats[STAT_SPBALLISTA_LEVEL] = 0;
+		//cl->ps.stats[STAT_CANON_LEVEL] = 0;
+		//cl->ps.stats[STAT_BOW_LEVEL] = 0;
+		//cl->ps.stats[STAT_MAGEHAND_LEVEL] = 0;
+		//cl->ps.stats[STAT_SHIELD_LEVEL] = 0;
+
 
 		//Attributes
+		//cl->ps.stats[STAT_PLAYER_BASEDAMAGE] = 0;
+		//cl->ps.stats[STAT_PLAYER_MAXHP] = 0;
+		//cl->ps.stats[STAT_PLAYER_CRITCHANCE] = 0;
+		//cl->ps.stats[STAT_PLAYER_CRITDAMAGE] = 0;
+		//cl->ps.stats[STAT_PLAYER_SOULGAIN] = 0;
 	}
 
 	if (ent->client->pers.showHelpModMenu) {
@@ -559,7 +810,6 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 	else {
 		ent->client->ps.stats[STAT_HELP_MOD_MENU] = 0;
 	}
-	
 }
 
 

@@ -933,6 +933,20 @@ void Cmd_HelpModMenu_f(edict_t* ent) {
 	}
 }
 
+void Cmd_ShowWeaponStats_f(edict_t* ent) {
+	gclient_t* cl;
+	cl = ent->client;
+	cl->pers.currentAttributeScreen = WEAPON;
+
+}
+
+void Cmd_ShowPlayerStats_f(edict_t* ent) {
+	gclient_t* cl;
+	cl = ent->client;
+	cl->pers.currentAttributeScreen = PLAYER;
+
+}
+
 void LevelUpWeapons(edict_t* ent) {
 	if (ent->client == NULL) return;
 	 
@@ -1007,6 +1021,14 @@ void ClientCommand (edict_t *ent)
 	}
 	if (Q_stricmp(cmd, "levelUp") == 0) {
 		LevelUpWeapons(ent);
+		return;
+	}
+	if (Q_stricmp(cmd, "weaponStats") == 0) {
+		Cmd_ShowWeaponStats_f(ent);
+		return;
+	}
+	if (Q_stricmp(cmd, "playerStats") == 0) {
+		Cmd_ShowPlayerStats_f(ent);
 		return;
 	}
 

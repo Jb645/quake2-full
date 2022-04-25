@@ -698,76 +698,6 @@ char *single_statusbar =
 "endif "
 			// New
 
-		
-		
-"if 20 "
-"	xv -150 yv 50 pic 20"
-//Weapons
-"	xv -130 yv 98 string  \"1 Sword\""
-"	xv -130 yv 108 string \"2 Spear\""
-"	xv -130 yv 118 string \"3 HM\""
-"	xv -130 yv 128 string \"4 SP-HM\""
-"	xv -130 yv 138 string \"5 Daggers\""
-"	xv -130 yv 148 string \"6 BST\""
-"	xv -130 yv 158 string \"7 SP-BST\""
-"	xv -130 yv 168 string \"8 Canon\""
-"	xv -130 yv 178 string \"9 Bow\""
-"	xv -130 yv 188 string \"10 MageHD\""
-"	xv -130 yv 198 string \"11 Shield\""
-
-//Weapons Visual
-
-
-
-"	xv -340 yv -139 string  \"1\""
-"	xv -300 yv -152 num 2  22"
-"	xv -340 yv -113 string  \"2\""
-"	xv -300 yv -126 num 2  22"
-
-//"	xv -340 yv -  string  \"3\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"4\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"5\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"6\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"7\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"8\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"9\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"10\""
-//"	xv -300 yv -  num 2  22"
-//"	xv -340 yv -  string  \"11\""
-
-//Player Attributes
-"	xv -28 yv 98 string  \"1 BS Attack\""
-"	xv -28 yv 108 string \"2 Max HP\""
-"	xv -28 yv 118 string \"3 Crit %\""
-"	xv -28 yv 128 string \"4 Crit Dmg\""
-"	xv -28 yv 138 string \"5 Soul Gain\""
-
-"endif "
-
-// XP			// New
-"if 18 "			// New. If STAT_XP_ICON is not zero, then do
-"	yv	160 "		// New  //controls y position of string
-"	xv	-10 "		// New  //controls x position of string
-"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
-"	xv	24"
-"	pic	18 "		// New. Display icon
-"endif "
-
-// Status Screen
-// Mod Help Menu
-"if 21"
-"	xv 156"
-"	yv 50 "
-"	pic 21"
-"endif "
-
 //  help / weapon icon 
 "if 11 "
 "	xv	148 "
@@ -911,7 +841,9 @@ void SP_worldspawn (edict_t *ent)
 	if (deathmatch->value)
 		gi.configstring (CS_STATUSBAR, dm_statusbar);
 	else
-		gi.configstring (CS_STATUSBAR, single_statusbar);
+		gi.configstring(CS_STATUSBAR, single_statusbar);
+	
+	
 
 	//---------------
 

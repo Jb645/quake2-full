@@ -1,13 +1,20 @@
-﻿  g_spawn.c
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(380,5): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(433,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(543,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(544,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(884,10): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(891,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\g_spawn.c(894,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  p_client.c
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(70,42): warning C4100: 'self': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(179,66): warning C4100: 'damage': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(179,56): warning C4100: 'kick': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(179,43): warning C4100: 'other': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(179,28): warning C4100: 'self': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(211,46): warning C4100: 'inflictor': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(501,91): warning C4100: 'point': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(634,6): warning C4189: 'currentSoulNumber': local variable is initialized but not referenced
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(1027,89): warning C4100: 'point': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(1027,60): warning C4100: 'attacker': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(1027,40): warning C4100: 'inflictor': unreferenced formal parameter
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(1466,10): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(1471,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\IT266-GameMod\quake2-full\game\p_client.c(1511,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
      Creating library .\..\release\gamex86.lib and object .\..\release\gamex86.exp
-  game.vcxproj -> C:\Users\josue\OneDrive\Documents\Coding\GitHub\Quake2\quake2-full\game\release\gamex86.dll
+  game.vcxproj -> D:\GitHub\IT266-GameMod\quake2-full\game\release\gamex86.dll
   ..\customMod\Adds\config.cfg
   ..\customMod\Adds\pics\Allocation Souls.xcf
   ..\customMod\Adds\pics\i_HelpModMenu.pcx

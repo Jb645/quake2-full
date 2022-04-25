@@ -822,7 +822,7 @@ void GetChaseTarget(edict_t *ent);
 //
 // gluttony mod
 //
-void PlayerGainsSouls(edict_t* inflictor);
+void PlayerGainsSouls(edict_t* attacker);
 void LevelUpWeapons(edict_t* client);
 void G_SetSoulAllocationScreen(edict_t* ent);
 //============================================================================
@@ -865,6 +865,11 @@ typedef struct
 
 	
 } gluttonyState;
+
+enum AttributeState {
+	PLAYER,
+	WEAPON
+};
 
 //Gluttony Mod End
 // client data that stays across multiple level loads
@@ -909,7 +914,9 @@ typedef struct
 	int playersouls;
 	qboolean showSoulAllocation;
 	qboolean showHelpModMenu;
+	enum AttributeState currentAttributeScreen;
 	enum WeaponForms currentweaponForm;
+	int baseDamageMultiplier, maxHPMultiplier, critChance, critDamage, soulgainMultiplier;
 	//Gluttony Mod End
 
 } client_persistant_t;

@@ -540,44 +540,44 @@ char* single_Attributes_Weapon =
 "	xv -130 yv 168 string \"8 canon\""
 "	xv -130 yv 178 string \"9 bow\""
 "	xv -130 yv 188 string \"10 magehd\""
-"	xv -130 yv 198 string \"11 shield\""
+"	xv -130 yv 198 string \"g shield\""
 "endif"
 //weapons visual
 
 
 "if 22"
 "	xv -340 yv -150 string  \"1\""
-"	xv -330 yv -160 num 2  22"
+"	xv -280 yv -160 num 2  22"
 
 "	xv -340 yv -120 string  \"2\""
-"	xv -330 yv -130 num 2  23"
+"	xv -280 yv -130 num 2  23"
 
 "	xv -340 yv -90  string  \"3\""
-"	xv -330 yv -100  num 2  24"
+"	xv -280 yv -100  num 2 24"
 
 "	xv -340 yv -60  string  \"4\""
-"	xv -330 yv -70  num 2  25"
+"	xv -280 yv -70  num 2  25"
 
 "	xv -340 yv -30  string  \"5\""
-"	xv -330 yv -40  num 2  26"
+"	xv -280 yv -40  num 2  26"
 
 "	xv -340 yv 0  string  \"6\""
-"	xv -330 yv -10  num 2  27"
+"	xv -280 yv -10  num 2  27"
 
 "	xv -340 yv 30  string  \"7\""
-"	xv -330 yv 20  num 2  28"
+"	xv -280 yv 20  num 2  28"
 
 "	xv -340 yv 60  string  \"8\""
-"	xv -330 yv 50  num 2  29"
+"	xv -280 yv 50  num 2  29"
 
 "	xv -340 yv 90  string  \"9\""
-"	xv -330 yv 80  num 2  30"
+"	xv -280 yv 80  num 2  30"
 
 "	xv -340 yv 120  string  \"10\""
-"	xv -330 yv 110  num 2  31"
+"	xv -280 yv 110  num 2  31"
 
-"	xv -340 yv 150  string  \"11\""
-"	xv -330 yv 140  num 2  17"
+"	xv -340 yv 150  string  \"g\""
+"	xv -280 yv 140  num 2  17"
 
 
 //player attributes
@@ -592,9 +592,9 @@ char* single_Attributes_Weapon =
 // XP			// New
 "if 18 "			// New. If STAT_XP_ICON is not zero, then do
 "	yv	160 "		// New  //controls y position of string
-"	xv	-44 "		// New  //controls x position of string
+"	xv	-14 "		// New  //controls x position of string
 "	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
-"	xv	-10"
+"	xv	20"
 "	pic	18 "		// New. Display icon
 "endif "
 
@@ -622,25 +622,25 @@ char* single_Attributes_Player =
 "	xv -130 yv 168 string \"8 canon\""
 "	xv -130 yv 178 string \"9 bow\""
 "	xv -130 yv 188 string \"10 magehd\""
-"	xv -130 yv 198 string \"11 shield\""
+"	xv -130 yv 198 string \"g shield\""
 "endif"
 
 //Player Attributes visual
 "if 22"
 "	xv -340 yv -150 string  \"1\""
-"	xv -330 yv -160 num 2  22"
+"	xv -280 yv -160 num 2  22"
 
 "	xv -340 yv -120 string  \"2\""
-"	xv -330 yv -130 num 2  23"
+"	xv -280 yv -130 num 2  23"
 
 "	xv -340 yv -90  string  \"3\""
-"	xv -330 yv -100  num 2  24"
+"	xv -280 yv -100  num 2  24"
 
 "	xv -340 yv -60  string  \"4\""
-"	xv -330 yv -70  num 2  25"
+"	xv -280 yv -70  num 2  25"
 
 "	xv -340 yv -30  string  \"5\""
-"	xv -330 yv -40  num 2  26"
+"	xv -280 yv -40  num 2  26"
 
 
 //player attributes
@@ -655,9 +655,9 @@ char* single_Attributes_Player =
 // XP			// New
 "if 18 "			// New. If STAT_XP_ICON is not zero, then do
 "	yv	160 "		// New  //controls y position of string
-"	xv	-44 "		// New  //controls x position of string
+"	xv	-14 "		// New  //controls x position of string
 "	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
-"	xv	-10"
+"	xv	20"
 "	pic	18 "		// New. Display icon
 "endif "
 
@@ -744,7 +744,6 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 			cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = cl->pers.critDamage;
 			cl->ps.stats[STAT_DAGGERS_LEVEL] = cl->pers.soulgainMultiplier;
 			currentStatusBar = single_Attributes_Player;
-
 			break;
 		case WEAPON:
 			cl->ps.stats[STAT_SWORD_LEVEL] = cl->pers.sword.level;
@@ -765,11 +764,12 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 			currentStatusBar = single_statusbar2;
 			break;
 		}
-		gi.configstring(CS_STATUSBAR, currentStatusBar);
 		ent->client->ps.stats[STAT_XP_ICON] = level.pic_XP;
 		ent->client->ps.stats[STAT_XP] = ent->client->pers.playersouls;
 		ent->client->ps.stats[STAT_SCREEN] = level.pic_SoulAllocationMenu;
 
+		gi.configstring(CS_STATUSBAR, currentStatusBar);
+		
 
 		
 

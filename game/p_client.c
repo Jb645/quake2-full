@@ -638,7 +638,7 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.sword.level = weaponLevel;
 	client->pers.sword.SoulCostToLevel = SoulCostToLevel;
 	client->pers.sword.currentForm = SWORD;
-	client->pers.sword.lastForm = NON;
+	client->pers.sword.lastForm = BLANK;
 	client->pers.sword.nextForm = SPEAR;
 	client->pers.currentweaponForm = SWORD;
 	// spear

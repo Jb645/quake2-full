@@ -19,6 +19,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 #include "g_local.h"
 #include "m_player.h"
+void BuyUpgrade(edict_t* ent, int cost, enum AttributeState attribute, enum PlayerAttributes playerAttribute);
 
 
 char *ClientTeam (edict_t *ent)
@@ -398,27 +399,35 @@ void Cmd_Use_f (edict_t *ent)
 	int			index;
 	gitem_t		*it;
 	char		*s;
-
+	
 	s = gi.args();
-	it = FindItem (s);
+	it = FindItem(s);
 	if (!it)
 	{
-		gi.cprintf (ent, PRINT_HIGH, "unknown item: %s\n", s);
+		gi.cprintf(ent, PRINT_HIGH, "unknown item: %s\n", s);
 		return;
 	}
 	if (!it->use)
 	{
-		gi.cprintf (ent, PRINT_HIGH, "Item is not usable.\n");
+		gi.cprintf(ent, PRINT_HIGH, "Item is not usable.\n");
 		return;
 	}
+	//Gluttony Mod
+	if (ent->client->pers.showSoulAllocation) { //gluttony
+		LevelUpWeapons(ent);
+	}
+	//Gluttony End
+
 	index = ITEM_INDEX(it);
 	if (!ent->client->pers.inventory[index])
 	{
-		gi.cprintf (ent, PRINT_HIGH, "Out of item: %s\n", s);
+		gi.cprintf(ent, PRINT_HIGH, "Out of item: %s\n", s);
 		return;
 	}
 
-	it->use (ent, it);
+	it->use(ent, it);
+	
+
 }
 
 
@@ -949,57 +958,262 @@ void Cmd_ShowPlayerStats_f(edict_t* ent) {
 
 void LevelUpWeapons(edict_t* ent) {
 	if (ent->client == NULL) return;
-	 
-	int souls=0;
-	int cost = 0;
-	souls = ent->client->pers.playersouls;
-	switch (ent->client->pers.currentweaponForm)
-	{
-	case SWORD:
-		cost = ent->client->pers.sword.SoulCostToLevel;
-		break;
-	case SPEAR:
-		cost = ent->client->pers.spear.SoulCostToLevel;
-		break;
-	case HAMMER:
-		cost = ent->client->pers.hammer.SoulCostToLevel;
-		break;
-	case SUPER_HAMMER:
-		cost = ent->client->pers.superHammer.SoulCostToLevel;
-		break;
-	case DAGGERS:
-		cost = ent->client->pers.daggers.SoulCostToLevel;
-		break;
-	case BALLISTA:
-		cost = ent->client->pers.ballista.SoulCostToLevel;
-		break;
-	case SUPER_BALLISTA:
-		cost = ent->client->pers.superBallista.SoulCostToLevel;
-		break;
-	case CANON:
-		cost = ent->client->pers.canon.SoulCostToLevel;
-		break;
-	case BOW:
-		cost = ent->client->pers.bow.SoulCostToLevel;
-		break;
-	case MAGE_HAND:
-		cost = ent->client->pers.mageHand.SoulCostToLevel;
-		break;
-	case SHIELD:
-		cost = ent->client->pers.shield.SoulCostToLevel;
-		break;
-	default:
-		gi.bprintf(PRINT_HIGH, "in default\n");
-		break;
-	}
+	gclient_t* cl = ent->client;
+	int cost = 10;
+	enum PlayerAttributes currentAttribute;
+	//SWORD, //Blaster- sword 
+	//SPEAR, //HyperBlaster - Spear
+	//HAMMER, //Shotgun- hammer 
+	//SUPER_HAMMER, //Super Shotgun - super Hammer
+	//DAGGERS, //Machine gun - Daggers
+	//BALLISTA, //Rocket launcher - Balista
+	//SUPER_BALLISTA, //Chain Gun - super ballista
+	//CANON, //Grenade Launcher - Canon
+	//BOW, //Rail Gun - Bow
+	//MAGE_HAND, //BFG10K - Mage Hand
+	//SHIELD, //Grenades - Shield
+	//BLANK
 
-	if (souls >= cost) {
-		gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
-		//add code to upgrade weapon and increase cost of upgrade
+	if(cl->pers.showSoulAllocation){
+		currentAttribute = BLANK;
+		if (Q_stricmp(gi.argv(1), "Blaster") == 0) {
+			currentAttribute = BASEDAMAGEMULTIPLIER;
+			ent->client->pers.currentweaponForm = SWORD;
+		}
+		if (Q_stricmp(gi.argv(1), "HyperBlaster") == 0) {
+			currentAttribute = MAXHPMULTIPLIER; 
+			ent->client->pers.currentweaponForm = SPEAR;
+		}
+		if (Q_stricmp(gi.argv(1), "Shotgun") == 0)
+		{
+			currentAttribute = CRITCHANCE;
+			ent->client->pers.currentweaponForm = HAMMER;
+		}
+		if (Q_stricmp(gi.argv(1), "Super") == 0){
+			currentAttribute = CRITDAMAGE;
+			ent->client->pers.currentweaponForm = SUPER_HAMMER;
+			}
+		if (Q_stricmp(gi.argv(1), "Machinegun") == 0){
+			currentAttribute = SOULGAINMULTIPLIER;
+			ent->client->pers.currentweaponForm = DAGGERS;
+			}
+		if (Q_stricmp(gi.argv(1), "Rocket") == 0){
+			currentAttribute = BLANK;
+			ent->client->pers.currentweaponForm = BALLISTA;
+			}
+		if (Q_stricmp(gi.argv(1), "Chaingun") == 0){
+			currentAttribute = BLANK;
+			ent->client->pers.currentweaponForm = SUPER_BALLISTA;
+			}
+		if (Q_stricmp(gi.argv(1), "Grenade") == 0){
+			currentAttribute = BLANK;
+			ent->client->pers.currentweaponForm = CANON;
+			}
+		if (Q_stricmp(gi.argv(1), "Railgun") == 0){
+			currentAttribute = BLANK;
+			ent->client->pers.currentweaponForm = BOW;
+			}
+		if (Q_stricmp(gi.argv(1), "BFG10K") == 0){
+			currentAttribute = BLANK;
+			ent->client->pers.currentweaponForm = MAGE_HAND;
+			}
+		if (Q_stricmp(gi.argv(1), "grenades") == 0){
+			currentAttribute = BLANK;
+			ent->client->pers.currentweaponForm = SHIELD;
+		}
+
+		BuyUpgrade(ent, cost, cl->pers.currentAttributeScreen, currentAttribute);
 	}
-	else {
-		gi.bprintf(PRINT_HIGH, "Not enough souls\n");
-	}
+}
+
+void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum PlayerAttributes playerAttribute) 
+{
+		gluttonyState current = ent->client->pers.sword;
+		gclient_t* cl = ent->client;
+		switch (attribute)
+		{
+			case PLAYER:
+				if (cl->pers.playersouls >= cost) {
+					switch (playerAttribute)
+					{
+						case BASEDAMAGEMULTIPLIER:
+							ent->client->pers.baseDamageMultiplier++;
+							cl->pers.playersouls -= 10;
+							break;
+						case MAXHPMULTIPLIER:
+							ent->client->pers.maxHPMultiplier++;
+							cl->pers.playersouls -= 10;
+							break;
+						case CRITCHANCE:
+							ent->client->pers.critChance++;
+							cl->pers.playersouls -= 10;
+							break;
+						case CRITDAMAGE:
+							ent->client->pers.critDamage++;
+							cl->pers.playersouls -= 10;
+							break;
+						case SOULGAINMULTIPLIER:
+							ent->client->pers.soulgainMultiplier++;
+							cl->pers.playersouls -= 10;
+							break;
+						case BLANK:
+							gi.bprintf(PRINT_HIGH, "didn't choose an attribute\n");
+							break;
+						default:
+							gi.bprintf(PRINT_HIGH, "Invalid player attribute\n");
+							break;
+					}
+				}
+				else {
+					gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+				}
+				break;
+			case WEAPON:
+				switch (ent->client->pers.currentweaponForm)
+				{
+				case SWORD:
+					cost = ent->client->pers.sword.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.sword.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case SPEAR:
+					cost = cl->pers.spear.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.spear.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case HAMMER:
+					cost = cl->pers.hammer.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.hammer.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case SUPER_HAMMER:
+					cost = ent->client->pers.superHammer.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.superHammer.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case DAGGERS:
+					cost = ent->client->pers.daggers.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.daggers.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case BALLISTA:
+					cost = ent->client->pers.ballista.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.ballista.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case SUPER_BALLISTA:
+					cost = ent->client->pers.superBallista.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.superBallista.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case CANON:
+					cost = ent->client->pers.canon.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.canon.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case BOW:
+					cost = ent->client->pers.bow.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.bow.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case MAGE_HAND:
+					cost = ent->client->pers.mageHand.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.mageHand.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case SHIELD:
+					cost = ent->client->pers.shield.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.shield.level++;
+						cl->pers.playersouls -= 10;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				default:
+					gi.bprintf(PRINT_HIGH, "in default\n");
+					break;
+				}
+				
+				break;
+			default:
+				gi.bprintf(PRINT_HIGH, "Invalid attribute state\n");
+				break;
+		}
+	
 }
 
 void ClientCommand (edict_t *ent)
@@ -1029,6 +1243,10 @@ void ClientCommand (edict_t *ent)
 	}
 	if (Q_stricmp(cmd, "playerStats") == 0) {
 		Cmd_ShowPlayerStats_f(ent);
+		return;
+	}
+	if (Q_stricmp(cmd, "level") == 0) {
+		LevelUpWeapons(ent);
 		return;
 	}
 

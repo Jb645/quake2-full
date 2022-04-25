@@ -854,11 +854,19 @@ enum WeaponForms
 	SHIELD, //Grenades - Shield
 	NON
 };
+enum PlayerAttributes {
+	BASEDAMAGEMULTIPLIER,
+	MAXHPMULTIPLIER, 
+	CRITCHANCE, 
+	CRITDAMAGE, 
+	SOULGAINMULTIPLIER,
+	BLANK
+};
 //Gluttony Mod
 typedef struct
 {
 	int level;
-	int SoulCostToLevel;
+	int * SoulCostToLevel;
 	enum WeaponForms currentForm;
 	enum WeaponForms nextForm;
 	enum WeaponForms lastForm;
@@ -916,6 +924,7 @@ typedef struct
 	qboolean showHelpModMenu;
 	enum AttributeState currentAttributeScreen;
 	enum WeaponForms currentweaponForm;
+	enum PlayerAttributes currentAttribute;
 	int baseDamageMultiplier, maxHPMultiplier, critChance, critDamage, soulgainMultiplier;
 	//Gluttony Mod End
 

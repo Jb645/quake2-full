@@ -494,9 +494,27 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 			SpawnDamage (TE_BLOOD, point, normal, take);
 		else
 			SpawnDamage (te_sparks, point, normal, take);
-
-
-		targ->health = targ->health - take;
+		if (targ->client == NULL) {
+			if (attacker->client != NULL) {
+				if (attacker->client->pers.critChance > (rand() % 100)) { //if the crit chance is bigger it means that it hit
+					take *= (attacker->client->pers.baseDamageMultiplier); //base multiplier
+					take*= attacker->client->pers.critDamage;
+					targ->health = targ->health - (take);
+					gi.bprintf(PRINT_HIGH, "CRIT DAMAGE\n");
+				}
+				else {
+					take *= attacker->client->pers.baseDamageMultiplier;
+					targ->health = targ->health - (take);
+				}
+				
+			}
+			
+		}
+		else {
+			targ->health = targ->health - take;
+		}
+		
+		gi.bprintf(PRINT_HIGH, "%i\n",targ->health);
 			
 		if (targ->health <= 0)
 		{

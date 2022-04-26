@@ -415,6 +415,7 @@ void Cmd_Use_f (edict_t *ent)
 	//Gluttony Mod
 	if (ent->client->pers.showSoulAllocation) { //gluttony
 		LevelUpWeapons(ent);
+		return; //return since thhe use doesn't matter when you have the menu open
 	}
 	//Gluttony End
 
@@ -959,7 +960,7 @@ void Cmd_ShowPlayerStats_f(edict_t* ent) {
 void LevelUpWeapons(edict_t* ent) {
 	if (ent->client == NULL) return;
 	gclient_t* cl = ent->client;
-	int cost = 10;
+	int cost = 1;
 	enum PlayerAttributes currentAttribute;
 	//SWORD, //Blaster- sword 
 	//SPEAR, //HyperBlaster - Spear
@@ -1030,6 +1031,16 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 {
 		gluttonyState current = ent->client->pers.sword;
 		gclient_t* cl = ent->client;
+
+		/*int randomNumber = 10 * random();
+		float randomNumberC = 10 * crandom();
+		gi.bprintf(PRINT_HIGH, "random: %i cRandom: %f\n", randomNumber, randomNumberC);
+		float percentage = rand() % 10;
+		float number = 1;
+		float result = (number > percentage);
+		gi.bprintf(PRINT_HIGH, "number: %f percentage:%f result: %f\n", number, percentage, result);*/
+
+		
 		switch (attribute)
 		{
 			case PLAYER:
@@ -1038,23 +1049,27 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					{
 						case BASEDAMAGEMULTIPLIER:
 							ent->client->pers.baseDamageMultiplier++;
-							cl->pers.playersouls -= 10;
+							cl->pers.playersouls -= 1;
 							break;
 						case MAXHPMULTIPLIER:
 							ent->client->pers.maxHPMultiplier++;
-							cl->pers.playersouls -= 10;
+							ent->client->pers.max_health= 100 + ((25 *(ent->client->pers.maxHPMultiplier))-25);
+							ent->client->pers.health = ent->client->pers.max_health;
+							ent->health = ent->client->pers.health;
+							ent->max_health = ent->client->pers.max_health;
+							cl->pers.playersouls -= 1;
 							break;
 						case CRITCHANCE:
-							ent->client->pers.critChance++;
-							cl->pers.playersouls -= 10;
+							ent->client->pers.critChance+=5;
+							cl->pers.playersouls -= 1;
 							break;
 						case CRITDAMAGE:
 							ent->client->pers.critDamage++;
-							cl->pers.playersouls -= 10;
+							cl->pers.playersouls -= 1;
 							break;
 						case SOULGAINMULTIPLIER:
 							ent->client->pers.soulgainMultiplier++;
-							cl->pers.playersouls -= 10;
+							cl->pers.playersouls -= 1;
 							break;
 						case BLANK:
 							gi.bprintf(PRINT_HIGH, "didn't choose an attribute\n");
@@ -1076,7 +1091,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.sword.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1088,7 +1103,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.spear.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1100,7 +1115,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.hammer.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1112,7 +1127,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.superHammer.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1124,7 +1139,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.daggers.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1136,7 +1151,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.ballista.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1148,7 +1163,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.superBallista.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1160,7 +1175,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.canon.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1172,7 +1187,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.bow.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1184,7 +1199,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.mageHand.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {
@@ -1196,7 +1211,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.shield.level++;
-						cl->pers.playersouls -= 10;
+						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}
 					else {

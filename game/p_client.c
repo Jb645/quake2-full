@@ -632,7 +632,7 @@ void InitClientPersistant (gclient_t *client)
 	//Gluttony Mod --
 	int weaponLevel = 0;
 	int currentSoulNumber = 0;
-	int SoulCostToLevel = 10;
+	int SoulCostToLevel = 1;
 	client->pers.showHelpModMenu = true;
 	// sword
 	client->pers.sword.level = weaponLevel;
@@ -705,8 +705,8 @@ void InitClientPersistant (gclient_t *client)
 	
 	//Player Attributes
 	client->pers.baseDamageMultiplier = 1;
-	client->pers.critChance = 1;
-	client->pers.critDamage = 1;
+	client->pers.critChance = 5;
+	client->pers.critDamage = 2;
 	client->pers.maxHPMultiplier = 1;
 	client->pers.soulgainMultiplier = 1;
 
@@ -717,10 +717,9 @@ void InitClientPersistant (gclient_t *client)
 }
 // GLuttony MOD
 void PlayerGainsSouls(edict_t *attacker) {
-	int bonusSouls = attacker->client->pers.soulgainMultiplier;
-	attacker->client->pers.playersouls += 10 * bonusSouls;
+	attacker->client->pers.playersouls += 1 * (attacker->client->pers.soulgainMultiplier);
 	gi.bprintf(PRINT_HIGH, "--------------------------------------\n");
-	gi.bprintf(PRINT_HIGH, "+10 Souls\n");
+	gi.bprintf(PRINT_HIGH, "+1 * (%i Modifier) Souls\n", attacker->client->pers.soulgainMultiplier);
 }
 
 

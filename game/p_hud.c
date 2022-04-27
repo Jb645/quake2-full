@@ -530,17 +530,20 @@ char* single_Attributes_Weapon =
 "if 20 "
 "	xv -150 yv 50 pic 20"
 //weapons
-"	xv -130 yv 98 string  \"1 sword\""
+"	xv -130 yv 98 string  \"1 sword\"" //melee
 "	xv -130 yv 108 string \"2 spear\""
 "	xv -130 yv 118 string \"3 hm\""
 "	xv -130 yv 128 string \"4 sp-hm\""
-"	xv -130 yv 138 string \"5 daggers\""
+"	xv -130 yv 138 string \"5 daggers\"" //range
 "	xv -130 yv 148 string \"6 bst\""
 "	xv -130 yv 158 string \"7 sp-bst\""
 "	xv -130 yv 168 string \"8 canon\""
-"	xv -130 yv 178 string \"9 bow\""
-"	xv -130 yv 188 string \"10 magehd\""
+"	xv -130 yv 178 string \"9 bow\""	//magic
+"	xv -130 yv 188 string \"0 magehd\"" 
 "	xv -130 yv 198 string \"g shield\""
+"	xv -130 yv 208 string \"e reflect\"" //use environment
+"	xv -130 yv 218 string \"(melee, range, magic)\""
+
 "endif"
 //weapons visual
 
@@ -573,19 +576,14 @@ char* single_Attributes_Weapon =
 "	xv -340 yv 90  string  \"9\""
 "	xv -280 yv 80  num 2  30"
 
-"	xv -340 yv 120  string  \"10\""
+"	xv -340 yv 120  string  \"0\""
 "	xv -280 yv 110  num 2  31"
 
 "	xv -340 yv 150  string  \"g\""
 "	xv -280 yv 140  num 2  17"
 
-
-//player attributes
-"	xv -28 yv 98 string  \"1 bs attack\""
-"	xv -28 yv 108 string \"2 max hp\""
-"	xv -28 yv 118 string \"3 crit %\""
-"	xv -28 yv 128 string \"4 crit dmg\""
-"	xv -28 yv 138 string \"5 soul gain\""
+"	xv -340 yv 180  string  \"e\""
+"	xv -280 yv 170  num 2  12"
 
 "endif "
 
@@ -612,17 +610,8 @@ char* single_Attributes_Player =
 "if 20 "
 "	xv -150 yv 50 pic 20"
 //weapons
-"	xv -130 yv 98 string  \"1 sword\""
-"	xv -130 yv 108 string \"2 spear\""
-"	xv -130 yv 118 string \"3 hm\""
-"	xv -130 yv 128 string \"4 sp-hm\""
-"	xv -130 yv 138 string \"5 daggers\""
-"	xv -130 yv 148 string \"6 bst\""
-"	xv -130 yv 158 string \"7 sp-bst\""
-"	xv -130 yv 168 string \"8 canon\""
-"	xv -130 yv 178 string \"9 bow\""
-"	xv -130 yv 188 string \"10 magehd\""
-"	xv -130 yv 198 string \"g shield\""
+
+
 "endif"
 
 //Player Attributes visual
@@ -757,6 +746,7 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 			cl->ps.stats[STAT_BOW_LEVEL] = cl->pers.bow.level;
 			cl->ps.stats[STAT_MAGEHAND_LEVEL] = cl->pers.mageHand.level;
 			cl->ps.stats[STAT_SHIELD_LEVEL] = cl->pers.shield.level;
+			cl->ps.stats[STAT_REFLECT_LEVEL] = cl->pers.reflect.level;
 			currentStatusBar = single_Attributes_Weapon;
 			// Weapons
 			break;

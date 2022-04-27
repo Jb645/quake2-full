@@ -36,6 +36,10 @@ void Weapon_GrenadeLauncher (edict_t *ent);
 void Weapon_Railgun (edict_t *ent);
 void Weapon_BFG (edict_t *ent);
 
+//Gluttony Mod
+void weapon_Sword(edict_t* ent);
+//Gluttony Mod End
+
 gitem_armor_t jacketarmor_info	= { 25,  50, .30, .00, ARMOR_JACKET};
 gitem_armor_t combatarmor_info	= { 50, 100, .60, .30, ARMOR_COMBAT};
 gitem_armor_t bodyarmor_info	= {100, 200, .80, .60, ARMOR_BODY};
@@ -1538,7 +1542,31 @@ always owned, never in the world
 		0,
 /* precache */ "sprites/s_bfg1.sp2 sprites/s_bfg2.sp2 sprites/s_bfg3.sp2 weapons/bfg__f1y.wav weapons/bfg__l1a.wav weapons/bfg__x1b.wav weapons/bfg_hum.wav"
 	},
-
+	//
+	// Gluttony WEAPONS
+	//
+	/*weapon sowrd
+	always owned, never in the world*/
+	{
+		"weapon_sword",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"Sword",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/blastf1a.wav misc/lasfly.wav" //The sound of the blaster
+	},
 	//
 	// AMMO ITEMS
 	//

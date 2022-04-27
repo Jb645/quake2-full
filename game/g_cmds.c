@@ -1022,6 +1022,11 @@ void LevelUpWeapons(edict_t* ent) {
 			currentAttribute = BLANK;
 			ent->client->pers.currentweaponForm = SHIELD;
 		}
+		if (Q_stricmp(gi.argv(1), "environment") == 0)
+		{
+			currentAttribute = BLANK;
+			ent->client->pers.currentweaponForm = REFLECT;
+		}
 
 		BuyUpgrade(ent, cost, cl->pers.currentAttributeScreen, currentAttribute);
 	}
@@ -1211,6 +1216,18 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
 						cl->pers.shield.level++;
+						cl->pers.playersouls -= 1;
+						//add code to upgrade weapon and increase cost of upgrade
+					}
+					else {
+						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
+					}
+					break;
+				case REFLECT:
+					cost = ent->client->pers.reflect.SoulCostToLevel;
+					if (cl->pers.playersouls >= cost) {
+						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
+						cl->pers.reflect.level++;
 						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}

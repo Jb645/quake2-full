@@ -610,7 +610,10 @@ void InitClientPersistant (gclient_t *client)
 	gitem_t		*item;
 
 	memset (&client->pers, 0, sizeof(client->pers));
-
+	//GLuttony Mod
+	item = FindItem("Sword");
+	client->pers.inventory[ITEM_INDEX(item)] = 1;
+	//Gluttony End
 	item = FindItem("Blaster");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
@@ -701,7 +704,15 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.shield.SoulCostToLevel = SoulCostToLevel;
 	client->pers.shield.currentForm = SHIELD;
 	client->pers.shield.lastForm = MAGE_HAND;
-	client->pers.shield.nextForm = SWORD;
+	client->pers.shield.nextForm = REFLECT;
+
+	// sword
+	client->pers.reflect.level = weaponLevel;
+	client->pers.reflect.SoulCostToLevel = SoulCostToLevel;
+	client->pers.reflect.currentForm = REFLECT;
+	client->pers.reflect.lastForm = SHIELD;
+	client->pers.reflect.nextForm = MAGE_HAND;
+	client->pers.currentweaponForm = SWORD;
 	
 	//Player Attributes
 	client->pers.baseDamageMultiplier = 1;

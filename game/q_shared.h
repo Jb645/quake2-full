@@ -1024,6 +1024,7 @@ typedef enum
 #define STAT_BOW_LEVEL			30
 #define STAT_MAGEHAND_LEVEL		31
 #define STAT_SHIELD_LEVEL		17
+#define STAT_REFLECT_LEVEL		12
 #define	MAX_STATS				32
 
 

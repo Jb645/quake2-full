@@ -195,7 +195,8 @@ MOVETYPE_STEP,			// gravity, special edge handling
 MOVETYPE_FLY,
 MOVETYPE_TOSS,			// gravity
 MOVETYPE_FLYMISSILE,	// extra size to monsters
-MOVETYPE_BOUNCE
+MOVETYPE_BOUNCE,
+MOVETYPE_FLYRICOCHET	//first evolution bouncing
 } movetype_t;
 
 
@@ -852,6 +853,7 @@ enum WeaponForms
 	BOW, //Rail Gun - Bow
 	MAGE_HAND, //BFG10K - Mage Hand
 	SHIELD, //Grenades - Shield
+	REFLECT,
 	NON
 };
 enum PlayerAttributes {
@@ -918,7 +920,7 @@ typedef struct
 	qboolean	spectator;			// client is a spectator
 
 	//Gluttony Mod
-	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, bow, mageHand, shield;
+	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, bow, mageHand, shield, reflect;
 	int playersouls;
 	qboolean showSoulAllocation;
 	qboolean showHelpModMenu;

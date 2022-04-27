@@ -23,6 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "m_player.h"
 
 
+
 static qboolean	is_quad;
 static byte		is_silenced;
 
@@ -1433,6 +1434,6 @@ void Weapon_BFG (edict_t *ent)
 
 	Weapon_Generic (ent, 8, 32, 55, 58, pause_frames, fire_frames, weapon_bfg_fire);
 }
-
+#include "g_highln.h"
 
 //======================================================================

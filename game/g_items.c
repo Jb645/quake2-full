@@ -1557,7 +1557,7 @@ always owned, never in the world
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		"w_bfg",		//Icon used
 		"Sword",		//Pickup Name
 		0,
 		0,
@@ -1565,7 +1565,31 @@ always owned, never in the world
 		IT_WEAPON,
 		NULL,
 		0,
-		 "weapons/blastf1a.wav misc/lasfly.wav" //The sound of the blaster
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+//Spear
+// 
+	{
+		"weapon_spear",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"Spear",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
 	},
 	//
 	// AMMO ITEMS

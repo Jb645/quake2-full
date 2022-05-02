@@ -1,6 +1,7 @@
-#define SWORD_NORMAL_DAMAGE 100
-#define SWORD_DEATHMATCH_DAMAGE 150
+#define SWORD_NORMAL_DAMAGE 50
+#define SWORD_DEATHMATCH_DAMAGE 100
 #define SWORD_KICK 500
+#define SWORD_RANGE 35
 
 
 /*
@@ -16,7 +17,7 @@ attacks with the beloved sword of the highlander
 =============
 */
 
-void fire_sword (edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick){
+void fire_sword (edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick, int range){
 	//You may recognize a lot of this from the fire lead command, which
 	//is the one that I understood best what the hell was going on
 
@@ -38,8 +39,8 @@ void fire_sword (edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kic
 		AngleVectors(dir, forward, right, up);             //possibly sets some of the angle vectors
 												//as standards?
 
-		VectorMA(start, 8192, forward, end);           //This does some extension of the vector...
-													//note how short I have this attack going
+		VectorMA(start, range, aimdir, end);
+		tr = gi.trace(self->s.origin, NULL, NULL, end, self, MASK_SHOT);
 	}
 
 	//The fire_lead had an awful lot of stuff in here dealing with the effect of the shot
@@ -54,19 +55,21 @@ void fire_sword (edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kic
 			{
 				//This tells us to damage the thing that in our path...hehe
 				T_Damage(tr.ent, self, self, aimdir, tr.endpos, tr.plane.normal, damage, kick, 0,0);
+				gi.sound(self, CHAN_AUTO, gi.soundindex("misc/fhit3.wav"), 1, ATTN_NORM, 0);
 			}
 			else
 			{
 				if (strncmp(tr.surface->name, "sky", 3) != 0)
 				{
 					gi.WriteByte(svc_temp_entity);
-					gi.WriteByte(TE_GUNSHOT);
+					gi.WriteByte(TE_SPARKS);
 					gi.WritePosition(tr.endpos);
 					gi.WriteDir(tr.plane.normal);
 					gi.multicast(tr.endpos, MULTICAST_PVS);
 
-					if (self->client)
-						PlayerNoise(self, tr.endpos, PNOISE_IMPACT);
+					/*if (self->client)
+						PlayerNoise(self, tr.endpos, PNOISE_IMPACT);*/
+					gi.sound(self, CHAN_AUTO, gi.soundindex("weapons/grenlb1b.wav"), 1, ATTN_NORM, 0);
 				}
 			}
 		}
@@ -89,8 +92,10 @@ void sword_attack(edict_t* ent, vec3_t g_offset, int damage)
 
 	VectorScale(forward, -2, ent->client->kick_origin);
 	ent->client->kick_angles[0] = -1;
-
-	fire_sword(ent, start, forward, damage, SWORD_KICK);
+	//sword, spear, hammer super hammer
+	//ent->client->pers.ballista
+	
+	fire_sword(ent, start, forward, damage, SWORD_KICK,SWORD_RANGE);
 }
 
 void Weapon_Sword_Fire(edict_t* ent)

@@ -549,41 +549,41 @@ char* single_Attributes_Weapon =
 
 
 "if 22"
-"	xv -340 yv -150 string  \"1\""
-"	xv -280 yv -160 num 2  22"
-
-"	xv -340 yv -120 string  \"2\""
-"	xv -280 yv -130 num 2  23"
-
-"	xv -340 yv -90  string  \"3\""
-"	xv -280 yv -100  num 2 24"
-
-"	xv -340 yv -60  string  \"4\""
-"	xv -280 yv -70  num 2  25"
-
-"	xv -340 yv -30  string  \"5\""
-"	xv -280 yv -40  num 2  26"
-
-"	xv -340 yv 0  string  \"6\""
-"	xv -280 yv -10  num 2  27"
-
-"	xv -340 yv 30  string  \"7\""
-"	xv -280 yv 20  num 2  28"
-
-"	xv -340 yv 60  string  \"8\""
-"	xv -280 yv 50  num 2  29"
-
-"	xv -340 yv 90  string  \"9\""
-"	xv -280 yv 80  num 2  30"
-
-"	xv -340 yv 120  string  \"0\""
-"	xv -280 yv 110  num 2  31"
-
-"	xv -340 yv 150  string  \"g\""
-"	xv -280 yv 140  num 2  17"
-
-"	xv -340 yv 180  string  \"e\""
-"	xv -280 yv 170  num 2  12"
+//"	xv -340 yv -150 string  \"1\""
+//"	xv -280 yv -160 num 2  22"
+//
+//"	xv -340 yv -120 string  \"2\""
+//"	xv -280 yv -130 num 2  23"
+//
+//"	xv -340 yv -90  string  \"3\""
+//"	xv -280 yv -100  num 2 24"
+//
+//"	xv -340 yv -60  string  \"4\""
+//"	xv -280 yv -70  num 2  25"
+//
+//"	xv -340 yv -30  string  \"5\""
+//"	xv -280 yv -40  num 2  26"
+//
+//"	xv -340 yv 0  string  \"6\""
+//"	xv -280 yv -10  num 2  27"
+//
+//"	xv -340 yv 30  string  \"7\""
+//"	xv -280 yv 20  num 2  28"
+//
+//"	xv -340 yv 60  string  \"8\""
+//"	xv -280 yv 50  num 2  29"
+//
+//"	xv -340 yv 90  string  \"9\""
+//"	xv -280 yv 80  num 2  30"
+//
+//"	xv -340 yv 120  string  \"0\""
+//"	xv -280 yv 110  num 2  31"
+//
+//"	xv -340 yv 150  string  \"g\""
+//"	xv -280 yv 140  num 2  17"
+//
+//"	xv -340 yv 180  string  \"e\""
+//"	xv -280 yv 170  num 2  12"
 
 "endif "
 

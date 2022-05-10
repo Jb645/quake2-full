@@ -611,13 +611,14 @@ void InitClientPersistant (gclient_t *client)
 
 	memset (&client->pers, 0, sizeof(client->pers));
 	//GLuttony Mod
-	
+	item = FindItem("FireBalls");
+	client->pers.inventory[ITEM_INDEX(item)]++;
 	item = FindItem("FireBallSpell");
-	client->pers.inventory[ITEM_INDEX(item)] = 3;
+	client->pers.inventory[ITEM_INDEX(item)]++;
 	item = FindItem("Daggers");
-	client->pers.inventory[ITEM_INDEX(item)] = 2;
+	client->pers.inventory[ITEM_INDEX(item)]++;
 	item = FindItem("Sword");
-	client->pers.inventory[ITEM_INDEX(item)] = 1;
+	client->pers.inventory[ITEM_INDEX(item)]++;
 
 
 	//Gluttony End

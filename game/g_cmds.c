@@ -429,7 +429,6 @@ void Cmd_Use_f (edict_t *ent)
 		if (!Q_stricmp(s, "Blaster")) {
 			it = FindItem("Sword");
 		}
-		
 	}
 	//Gluttony mod added
 
@@ -985,52 +984,52 @@ void LevelUpWeapons(edict_t* ent) {
 
 	if(cl->pers.showSoulAllocation){
 		currentAttribute = BLANK;
-		if (Q_stricmp(gi.argv(1), "Blaster") == 0) {
+		if (Q_stricmp(gi.argv(1), "Blaster") == 0|| Q_stricmp(gi.argv(1), "Sword") == 0) {
 			currentAttribute = BASEDAMAGEMULTIPLIER;
 			ent->client->pers.currentweaponForm = SWORD;
 		}
-		if (Q_stricmp(gi.argv(1), "HyperBlaster") == 0) {
+		if (Q_stricmp(gi.argv(1), "HyperBlaster") == 0 || Q_stricmp(gi.argv(1), "Spear") == 0) {
 			currentAttribute = MAXHPMULTIPLIER; 
 			ent->client->pers.currentweaponForm = SPEAR;
 		}
-		if (Q_stricmp(gi.argv(1), "Shotgun") == 0)
+		if (Q_stricmp(gi.argv(1), "Shotgun") == 0 || Q_stricmp(gi.argv(1), "Hammer") == 0)
 		{
 			currentAttribute = CRITCHANCE;
 			ent->client->pers.currentweaponForm = HAMMER;
 		}
-		if (Q_stricmp(gi.argv(1), "Super") == 0){
+		if (Q_stricmp(gi.argv(1), "Super") == 0 || Q_stricmp(gi.argv(1), "SPHammer") == 0){
 			currentAttribute = CRITDAMAGE;
 			ent->client->pers.currentweaponForm = SUPER_HAMMER;
 			}
-		if (Q_stricmp(gi.argv(1), "Machinegun") == 0){
+		if (Q_stricmp(gi.argv(1), "Machinegun") == 0 || Q_stricmp(gi.argv(1), "Daggers") == 0){
 			currentAttribute = SOULGAINMULTIPLIER;
 			ent->client->pers.currentweaponForm = DAGGERS;
 			}
-		if (Q_stricmp(gi.argv(1), "Rocket") == 0){
+		if (Q_stricmp(gi.argv(1), "Rocket") == 0 || Q_stricmp(gi.argv(1), "Ballista") == 0){
 			currentAttribute = MELEEUNLOCK;
 			ent->client->pers.currentweaponForm = BALLISTA;
 			}
-		if (Q_stricmp(gi.argv(1), "Chaingun") == 0){
+		if (Q_stricmp(gi.argv(1), "Chaingun") == 0 || Q_stricmp(gi.argv(1), "SPBallista") == 0){
 			currentAttribute = RANGEDUNLOCK;
 			ent->client->pers.currentweaponForm = SUPER_BALLISTA;
 			}
-		if (Q_stricmp(gi.argv(1), "Grenade") == 0){
+		if (Q_stricmp(gi.argv(1), "Grenade") == 0 || Q_stricmp(gi.argv(1), "Cannon") == 0) {
 			currentAttribute = MAGICUNLOCK;
 			ent->client->pers.currentweaponForm = CANON;
-			}
-		if (Q_stricmp(gi.argv(1), "Railgun") == 0){
+		}
+		if (Q_stricmp(gi.argv(1), "Railgun") == 0 || Q_stricmp(gi.argv(1), "FireBallSpell") == 0) {
 			currentAttribute = BLANK;
 			ent->client->pers.currentweaponForm = FIREBALL;
-			}
-		if (Q_stricmp(gi.argv(1), "BFG10K") == 0){
+		}
+		if (Q_stricmp(gi.argv(1), "BFG10K") == 0 || Q_stricmp(gi.argv(1), "MageHand") == 0) {
 			currentAttribute = BLANK;
 			ent->client->pers.currentweaponForm = MAGE_HAND;
-			}
-		if (Q_stricmp(gi.argv(1), "grenades") == 0){
+		}
+		if (Q_stricmp(gi.argv(1), "grenades") == 0 || Q_stricmp(gi.argv(1), "Shield") == 0) {
 			currentAttribute = BLANK;
 			ent->client->pers.currentweaponForm = SHIELD;
 		}
-		if (Q_stricmp(gi.argv(1), "environment") == 0)
+		if (Q_stricmp(gi.argv(1), "environment") == 0 || Q_stricmp(gi.argv(1), "Reflect") == 0)
 		{
 			currentAttribute = BLANK;
 			ent->client->pers.currentweaponForm = REFLECT;
@@ -1044,6 +1043,8 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 {
 		gluttonyState current = ent->client->pers.sword;
 		gclient_t* cl = ent->client;
+		gitem_t* item;
+		item = "";
 
 		/*int randomNumber = 10 * random();
 		float randomNumberC = 10 * crandom();
@@ -1085,16 +1086,68 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 							cl->pers.playersouls -= 1;
 							break;
 						case MELEEUNLOCK:
-							if(ent->client->pers.weapon_melee<STAGE4)
-							ent->client->pers.weapon_melee++;
+							if (ent->client->pers.weapon_melee < STAGE4) {
+								ent->client->pers.weapon_melee++;
+								switch (ent->client->pers.weapon_melee)
+								{
+								case STAGE2:
+									item = FindItem("Spear");
+									break;
+								case STAGE3:
+									item = FindItem("Hammer");
+									break;
+								case STAGE4:
+									item = FindItem("SPHammer");
+									break;
+								default:
+									gi.bprintf(PRINT_HIGH, "out of bounds");
+									break;
+								}
+								cl->pers.inventory[ITEM_INDEX(item)] ++;
+							}
+							
 							break;
 						case RANGEDUNLOCK:
-							if (ent->client->pers.weapon_ranged < STAGE4)
+							if (ent->client->pers.weapon_ranged < STAGE4) {
 								ent->client->pers.weapon_ranged++;
+									switch (ent->client->pers.weapon_ranged)
+									{
+									case STAGE2:
+										item = FindItem("Ballista");
+										break;
+									case STAGE3:
+										item = FindItem("SPBallista");
+										break;
+									case STAGE4:
+										item = FindItem("Cannon");
+										break;
+									default:
+										gi.bprintf(PRINT_HIGH, "out of bounds");
+										break;
+									}
+									cl->pers.inventory[ITEM_INDEX(item)]++;
+								}
 							break;
 						case MAGICUNLOCK:
-							if (ent->client->pers.weapon_magic < STAGE4)
-								ent->client->pers.weapon_magic++;
+							if (ent->client->pers.weapon_magic < STAGE4){
+									ent->client->pers.weapon_magic++;
+									switch (ent->client->pers.weapon_magic)
+									{
+									case STAGE2:
+										item = FindItem("MageHand");
+										break;
+									case STAGE3:
+										item = FindItem("Shield");
+										break;
+									case STAGE4:
+										item = FindItem("Reflect");
+										break;
+									default:
+										gi.bprintf(PRINT_HIGH, "out of bounds");
+										break;
+									}
+									cl->pers.inventory[ITEM_INDEX(item)] ++;
+								}
 							break;
 						case BLANK:
 							gi.bprintf(PRINT_HIGH, "didn't choose an attribute\n");

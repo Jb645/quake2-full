@@ -1542,11 +1542,17 @@ always owned, never in the world
 		0,
 /* precache */ "sprites/s_bfg1.sp2 sprites/s_bfg2.sp2 sprites/s_bfg3.sp2 weapons/bfg__f1y.wav weapons/bfg__l1a.wav weapons/bfg__x1b.wav weapons/bfg_hum.wav"
 	},
-	//
-	// Gluttony WEAPONS
-	//
-	/*weapon sowrd
-	always owned, never in the world*/
+
+//
+// Gluttony WEAPONS
+//
+
+//
+// Melee
+//
+
+/*weapon sowrd
+always owned, never in the world*/
 	{
 		"weapon_sword",
 		NULL,
@@ -1557,7 +1563,7 @@ always owned, never in the world
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_bfg",		//Icon used
+		"w_sword",		//Icon used
 		"Sword",		//Pickup Name
 		0,
 		0,
@@ -1582,6 +1588,262 @@ always owned, never in the world
 		"models/weapons/v_blast/tris.md2", //model
 		"w_blaster",		//Icon used
 		"Spear",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+//Hammer
+// 
+	{
+		"weapon_Hammer",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"Hammer",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+//Super Hammer
+// 
+	{
+		"weapon_SPHammer",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"SPHammer",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+//
+//Ranged
+//
+
+//Daggers
+	{
+		"weapon_daggers",
+		NULL,
+		Use_Weapon,
+		NULL,
+		Weapon_Blaster,
+		"misc/w_pkup.wav",
+		NULL, 0,
+		NULL,
+		/* icon */		"w_daggers",
+		/* pickup */	"Daggers",
+		0,
+		0,
+		NULL,
+		IT_WEAPON | IT_STAY_COOP,
+		WEAP_BLASTER,
+		NULL,
+		0,
+		/* precache */ "weapons/blastf1a.wav misc/lasfly.wav"
+	},
+
+//Ballista
+
+	{
+		"weapon_ballista",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"Ballista",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+
+//Super Ballista
+	{
+		"weapon_SPballista",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"SPBallista",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+//Canon
+	{
+		"weapon_cannon",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"Cannon",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+
+	//
+	// Magic
+	// 
+//Fireball
+	{
+		"weapon_fireball",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		Weapon_RocketLauncher,		//what function it is
+		"misc.w_pkup.wav",
+		NULL, 0,
+		NULL,//model
+		"w_fireball",		//Icon used
+		"FireBallSpell",		//Pickup Name
+		0,
+		1,
+		"FireBalls",
+		IT_WEAPON,
+		WEAP_ROCKETLAUNCHER,
+		NULL,
+		0,
+		"models/objects/rocket/tris.md2 weapons/rockfly.wav weapons/rocklf1a.wav weapons/rocklr1b.wav models/objects/debris2/tris.md2" //The sound of rocket
+		 //blastf1a.wav misc/lasfly.wav
+	},
+
+	{
+		"ammo_fireball",
+		Pickup_Ammo,
+		NULL,
+		Drop_Ammo,
+		NULL,
+		"misc/am_pkup.wav",
+		"models/items/ammo/rockets/medium/tris.md2", 0,
+		NULL,
+		/* icon */		"a_rockets",
+		/* pickup */	"FireBalls",
+		/* width */		1,
+				20,
+				NULL,
+				IT_AMMO,
+				0,
+				NULL,
+				AMMO_ROCKETS,
+				/* precache */ ""
+	},
+
+//Mage Hand
+
+	{
+		"weapon_mageHand",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"MageHand",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+
+//Shield
+	{
+		"weapon_shield",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"Shield",		//Pickup Name
+		0,
+		0,
+		NULL,
+		IT_WEAPON,
+		NULL,
+		0,
+		 "weapons/hgrenlb1b.wav misc/fhit3.wav" //The sound of the blaster
+		 //blastf1a.wav misc/lasfly.wav
+	},
+//Reflect
+	{
+		"weapon_reflect",
+		NULL,
+		Use_Weapon,			//How to use
+		NULL,
+		weapon_Sword,		//what function it is
+		"misc.w_pkup.wav",
+		NULL,
+		0,
+		"models/weapons/v_blast/tris.md2", //model
+		"w_blaster",		//Icon used
+		"Reflect",		//Pickup Name
 		0,
 		0,
 		NULL,

@@ -783,10 +783,10 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 
 
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
-
-	for (int i = 0; i < ent->client->ammo_index / 3; i++) {
-		fire_rocket(ent, start, forward, damage, 650*(i+1), damage_radius * 2, radius_damage); //650
-	}
+	fire_rocket(ent, start, forward, damage, 650 , damage_radius * 2, radius_damage); //650
+	/*for (int i = 0; i < ent->client->ammo_index / 3; i++) {
+		
+	}*/
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
 	gi.WriteShort (ent-g_edicts);
@@ -798,7 +798,7 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	PlayerNoise(ent, start, PNOISE_WEAPON);
 
 	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
-		ent->client->pers.inventory[ent->client->ammo_index]++;
+		ent->client->pers.inventory[ent->client->ammo_index]--;
 }
 
 void Weapon_RocketLauncher (edict_t *ent)

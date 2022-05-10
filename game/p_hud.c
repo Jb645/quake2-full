@@ -532,13 +532,13 @@ char* single_Attributes_Weapon =
 //weapons
 "	xv -130 yv 98 string  \"1 sword\"" //melee
 "	xv -130 yv 108 string \"2 spear\""
-"	xv -130 yv 118 string \"3 hm\""
+"	xv -130 yv 118 string \"3 hammer\""
 "	xv -130 yv 128 string \"4 sp-hm\""
 "	xv -130 yv 138 string \"5 daggers\"" //range
 "	xv -130 yv 148 string \"6 bst\""
 "	xv -130 yv 158 string \"7 sp-bst\""
 "	xv -130 yv 168 string \"8 canon\""
-"	xv -130 yv 178 string \"9 bow\""	//magic
+"	xv -130 yv 178 string \"9 fireball\""	//magic
 "	xv -130 yv 188 string \"0 magehd\"" 
 "	xv -130 yv 198 string \"g shield\""
 "	xv -130 yv 208 string \"e reflect\"" //use environment
@@ -631,6 +631,15 @@ char* single_Attributes_Player =
 "	xv -340 yv -30  string  \"5\""
 "	xv -280 yv -40  num 2  26"
 
+"	xv -340 yv 0  string  \"6\""
+"	xv -280 yv -10  num 2  27"
+
+"	xv -340 yv 30  string  \"7\""
+"	xv -280 yv 20  num 2  28"
+
+"	xv -340 yv 60  string  \"8\""
+"	xv -280 yv 50  num 2  29"
+
 
 //player attributes
 "	xv -28 yv 98 string  \"1 bs attack\""
@@ -638,6 +647,9 @@ char* single_Attributes_Player =
 "	xv -28 yv 118 string \"3 crit %\""
 "	xv -28 yv 128 string \"4 crit dmg\""
 "	xv -28 yv 138 string \"5 soul gain\""
+"	xv -130 yv 98 string \"6 melee-ev\""
+"	xv -130 yv 108 string \"7 ranged-ev\""
+"	xv -130 yv 118 string \"8 magic-ev\""
 
 "endif "
 
@@ -732,21 +744,90 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 			cl->ps.stats[STAT_HAMMER_LEVEL] = cl->pers.critChance;
 			cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = cl->pers.critDamage;
 			cl->ps.stats[STAT_DAGGERS_LEVEL] = cl->pers.soulgainMultiplier;
+			cl->ps.stats[STAT_BALLISTA_LEVEL] = cl->pers.weapon_melee;
+			cl->ps.stats[STAT_SPBALLISTA_LEVEL] = cl->pers.weapon_ranged;
+			cl->ps.stats[STAT_CANON_LEVEL] = cl->pers.weapon_magic;
 			currentStatusBar = single_Attributes_Player;
 			break;
 		case WEAPON:
-			cl->ps.stats[STAT_SWORD_LEVEL] = cl->pers.sword.level;
-			cl->ps.stats[STAT_SPEAR_LEVEL] = cl->pers.spear.level;
-			cl->ps.stats[STAT_HAMMER_LEVEL] = cl->pers.hammer.level;
-			cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = cl->pers.superHammer.level;
-			cl->ps.stats[STAT_DAGGERS_LEVEL] = cl->pers.daggers.level;
-			cl->ps.stats[STAT_BALLISTA_LEVEL] = cl->pers.ballista.level;
-			cl->ps.stats[STAT_SPBALLISTA_LEVEL] = cl->pers.superBallista.level;
-			cl->ps.stats[STAT_CANON_LEVEL] = cl->pers.canon.level;
-			cl->ps.stats[STAT_BOW_LEVEL] = cl->pers.bow.level;
-			cl->ps.stats[STAT_MAGEHAND_LEVEL] = cl->pers.mageHand.level;
-			cl->ps.stats[STAT_SHIELD_LEVEL] = cl->pers.shield.level;
-			cl->ps.stats[STAT_REFLECT_LEVEL] = cl->pers.reflect.level;
+			
+			switch (cl->pers.weapon_melee) // Melee Weapons
+			{
+			case STAGE1:
+				cl->ps.stats[STAT_SWORD_LEVEL] = 1;
+				cl->ps.stats[STAT_SPEAR_LEVEL] = 0;
+				cl->ps.stats[STAT_HAMMER_LEVEL] = 0;
+				cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = 0;
+			case STAGE2:
+				cl->ps.stats[STAT_SWORD_LEVEL] = 1;
+				cl->ps.stats[STAT_SPEAR_LEVEL] = 1;
+				cl->ps.stats[STAT_HAMMER_LEVEL] = 0;
+				cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = 0;
+			case STAGE3:
+				cl->ps.stats[STAT_SWORD_LEVEL] = 1;
+				cl->ps.stats[STAT_SPEAR_LEVEL] = 1;
+				cl->ps.stats[STAT_HAMMER_LEVEL] = 1;
+				cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = 0;
+			case STAGE4:
+				cl->ps.stats[STAT_SWORD_LEVEL] = 1;
+				cl->ps.stats[STAT_SPEAR_LEVEL] = 1;
+				cl->ps.stats[STAT_HAMMER_LEVEL] = 1;
+				cl->ps.stats[STAT_SUPERHAMMER_LEVEL] = 1;
+			default:
+				break;
+			}
+
+			switch (cl->pers.weapon_ranged)
+			{
+			case STAGE1:
+				cl->ps.stats[STAT_DAGGERS_LEVEL] = 1;
+				cl->ps.stats[STAT_BALLISTA_LEVEL] = 0;
+				cl->ps.stats[STAT_SPBALLISTA_LEVEL] = 0;
+				cl->ps.stats[STAT_CANON_LEVEL] = 0;
+			case STAGE2:
+				cl->ps.stats[STAT_DAGGERS_LEVEL] = 1;
+				cl->ps.stats[STAT_BALLISTA_LEVEL] = 1;
+				cl->ps.stats[STAT_SPBALLISTA_LEVEL] = 0;
+				cl->ps.stats[STAT_CANON_LEVEL] = 0;
+			case STAGE3:
+				cl->ps.stats[STAT_DAGGERS_LEVEL] = 1;
+				cl->ps.stats[STAT_BALLISTA_LEVEL] = 1;
+				cl->ps.stats[STAT_SPBALLISTA_LEVEL] = 1;
+				cl->ps.stats[STAT_CANON_LEVEL] = 0;
+			case STAGE4:
+				cl->ps.stats[STAT_DAGGERS_LEVEL] = 1;
+				cl->ps.stats[STAT_BALLISTA_LEVEL] = 1;
+				cl->ps.stats[STAT_SPBALLISTA_LEVEL] = 1;
+				cl->ps.stats[STAT_CANON_LEVEL] = 1;
+			default:
+				break;
+			}
+
+			switch (cl->pers.weapon_magic)
+			{
+			case STAGE1:
+				cl->ps.stats[STAT_FIREBALL_LEVEL] = 1;
+				cl->ps.stats[STAT_MAGEHAND_LEVEL] = 0;
+				cl->ps.stats[STAT_SHIELD_LEVEL] = 0;
+				cl->ps.stats[STAT_REFLECT_LEVEL] = 0;
+			case STAGE2:
+				cl->ps.stats[STAT_FIREBALL_LEVEL] = 1;
+				cl->ps.stats[STAT_MAGEHAND_LEVEL] = 1;
+				cl->ps.stats[STAT_SHIELD_LEVEL] = 0;
+				cl->ps.stats[STAT_REFLECT_LEVEL] = 0;
+			case STAGE3:
+				cl->ps.stats[STAT_FIREBALL_LEVEL] = 1;
+				cl->ps.stats[STAT_MAGEHAND_LEVEL] = 1;
+				cl->ps.stats[STAT_SHIELD_LEVEL] = 1;
+				cl->ps.stats[STAT_REFLECT_LEVEL] = 0;
+			case STAGE4:
+				cl->ps.stats[STAT_FIREBALL_LEVEL] = 1;
+				cl->ps.stats[STAT_MAGEHAND_LEVEL] = 1;
+				cl->ps.stats[STAT_SHIELD_LEVEL] = 1;
+				cl->ps.stats[STAT_REFLECT_LEVEL] = 1;
+			default:
+				break;
+			}
 			currentStatusBar = single_Attributes_Weapon;
 			// Weapons
 			break;
@@ -783,7 +864,7 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 		//cl->ps.stats[STAT_BALLISTA_LEVEL] = 0;
 		//cl->ps.stats[STAT_SPBALLISTA_LEVEL] = 0;
 		//cl->ps.stats[STAT_CANON_LEVEL] = 0;
-		//cl->ps.stats[STAT_BOW_LEVEL] = 0;
+		//cl->ps.stats[STAT_FIREBALL_LEVEL] = 0;
 		//cl->ps.stats[STAT_MAGEHAND_LEVEL] = 0;
 		//cl->ps.stats[STAT_SHIELD_LEVEL] = 0;
 

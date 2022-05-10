@@ -978,7 +978,7 @@ void LevelUpWeapons(edict_t* ent) {
 	//BALLISTA, //Rocket launcher - Balista
 	//SUPER_BALLISTA, //Chain Gun - super ballista
 	//CANON, //Grenade Launcher - Canon
-	//BOW, //Rail Gun - Bow
+	//FIREBALL, //Rail Gun - fireball
 	//MAGE_HAND, //BFG10K - Mage Hand
 	//SHIELD, //Grenades - Shield
 	//BLANK
@@ -1007,20 +1007,20 @@ void LevelUpWeapons(edict_t* ent) {
 			ent->client->pers.currentweaponForm = DAGGERS;
 			}
 		if (Q_stricmp(gi.argv(1), "Rocket") == 0){
-			currentAttribute = BLANK;
+			currentAttribute = MELEEUNLOCK;
 			ent->client->pers.currentweaponForm = BALLISTA;
 			}
 		if (Q_stricmp(gi.argv(1), "Chaingun") == 0){
-			currentAttribute = BLANK;
+			currentAttribute = RANGEDUNLOCK;
 			ent->client->pers.currentweaponForm = SUPER_BALLISTA;
 			}
 		if (Q_stricmp(gi.argv(1), "Grenade") == 0){
-			currentAttribute = BLANK;
+			currentAttribute = MAGICUNLOCK;
 			ent->client->pers.currentweaponForm = CANON;
 			}
 		if (Q_stricmp(gi.argv(1), "Railgun") == 0){
 			currentAttribute = BLANK;
-			ent->client->pers.currentweaponForm = BOW;
+			ent->client->pers.currentweaponForm = FIREBALL;
 			}
 		if (Q_stricmp(gi.argv(1), "BFG10K") == 0){
 			currentAttribute = BLANK;
@@ -1084,6 +1084,18 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 							ent->client->pers.soulgainMultiplier++;
 							cl->pers.playersouls -= 1;
 							break;
+						case MELEEUNLOCK:
+							if(ent->client->pers.weapon_melee<STAGE4)
+							ent->client->pers.weapon_melee++;
+							break;
+						case RANGEDUNLOCK:
+							if (ent->client->pers.weapon_ranged < STAGE4)
+								ent->client->pers.weapon_ranged++;
+							break;
+						case MAGICUNLOCK:
+							if (ent->client->pers.weapon_magic < STAGE4)
+								ent->client->pers.weapon_magic++;
+							break;
 						case BLANK:
 							gi.bprintf(PRINT_HIGH, "didn't choose an attribute\n");
 							break;
@@ -1097,6 +1109,8 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 				}
 				break;
 			case WEAPON:
+
+
 				switch (ent->client->pers.currentweaponForm)
 				{
 				case SWORD:
@@ -1195,11 +1209,11 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 						gi.bprintf(PRINT_HIGH, "Not enough souls\n");
 					}
 					break;
-				case BOW:
-					cost = ent->client->pers.bow.SoulCostToLevel;
+				case FIREBALL:
+					cost = ent->client->pers.fireball.SoulCostToLevel;
 					if (cl->pers.playersouls >= cost) {
 						gi.bprintf(PRINT_HIGH, "You where able to evolve weapon\n");
-						cl->pers.bow.level++;
+						cl->pers.fireball.level++;
 						cl->pers.playersouls -= 1;
 						//add code to upgrade weapon and increase cost of upgrade
 					}

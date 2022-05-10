@@ -611,10 +611,14 @@ void InitClientPersistant (gclient_t *client)
 
 	memset (&client->pers, 0, sizeof(client->pers));
 	//GLuttony Mod
+	
+	item = FindItem("FireBallSpell");
+	client->pers.inventory[ITEM_INDEX(item)] = 3;
+	item = FindItem("Daggers");
+	client->pers.inventory[ITEM_INDEX(item)] = 2;
 	item = FindItem("Sword");
 	client->pers.inventory[ITEM_INDEX(item)] = 1;
-	item = FindItem("Spear");
-	client->pers.inventory[ITEM_INDEX(item)] = 2;
+
 
 	//Gluttony End
 	//item = FindItem("Blaster");
@@ -640,6 +644,10 @@ void InitClientPersistant (gclient_t *client)
 	int currentSoulNumber = 0;
 	int SoulCostToLevel = 1;
 	client->pers.showHelpModMenu = true;
+	client->pers.weapon_melee = STAGE1;
+	client->pers.weapon_ranged = STAGE1;
+	client->pers.weapon_magic = STAGE1;
+
 	// sword
 	client->pers.sword.level = weaponLevel;
 	client->pers.sword.SoulCostToLevel = SoulCostToLevel;
@@ -688,19 +696,19 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.canon.SoulCostToLevel = SoulCostToLevel;
 	client->pers.canon.currentForm = CANON;
 	client->pers.canon.lastForm = SUPER_BALLISTA;
-	client->pers.canon.nextForm = BOW;
-	// bow
-	client->pers.bow.level = weaponLevel;
-	client->pers.bow.SoulCostToLevel = SoulCostToLevel;
-	client->pers.bow.currentForm = BOW;
-	client->pers.bow.lastForm = CANON;
-	client->pers.bow.nextForm = MAGE_HAND;
+	client->pers.canon.nextForm = FIREBALL;
+	// fireball
+	client->pers.fireball.level = weaponLevel;
+	client->pers.fireball.SoulCostToLevel = SoulCostToLevel;
+	client->pers.fireball.currentForm = FIREBALL;
+	client->pers.fireball.lastForm = CANON;
+	client->pers.fireball.nextForm = MAGE_HAND;
 	// mageHand
 	client->pers.mageHand.level = weaponLevel;
 
 	client->pers.mageHand.SoulCostToLevel = SoulCostToLevel;
 	client->pers.mageHand.currentForm = MAGE_HAND;
-	client->pers.mageHand.lastForm = BOW;
+	client->pers.mageHand.lastForm = FIREBALL;
 	client->pers.mageHand.nextForm = SHIELD;
 	// shield
 	client->pers.shield.level = weaponLevel;

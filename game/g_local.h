@@ -850,7 +850,7 @@ enum WeaponForms
 	BALLISTA, //Rocket launcher - Balista
 	SUPER_BALLISTA, //Chain Gun - super ballista
 	CANON, //Grenade Launcher - Canon
-	BOW, //Rail Gun - Bow
+	FIREBALL, //Rail Gun - Fireball
 	MAGE_HAND, //BFG10K - Mage Hand
 	SHIELD, //Grenades - Shield
 	REFLECT,
@@ -862,6 +862,9 @@ enum PlayerAttributes {
 	CRITCHANCE, 
 	CRITDAMAGE, 
 	SOULGAINMULTIPLIER,
+	MELEEUNLOCK,
+	RANGEDUNLOCK,
+	MAGICUNLOCK,
 	BLANK
 };
 //Gluttony Mod
@@ -875,6 +878,13 @@ typedef struct
 
 	
 } gluttonyState;
+
+enum WeaponEvolutionStage {
+	STAGE1,
+	STAGE2,
+	STAGE3,
+	STAGE4
+};
 
 enum AttributeState {
 	PLAYER,
@@ -920,7 +930,8 @@ typedef struct
 	qboolean	spectator;			// client is a spectator
 
 	//Gluttony Mod
-	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, bow, mageHand, shield, reflect;
+	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, fireball, mageHand, shield, reflect;
+	enum  WeaponEvolutionStage weapon_melee, weapon_ranged, weapon_magic;
 	int playersouls;
 	qboolean showSoulAllocation;
 	qboolean showHelpModMenu;

@@ -77,8 +77,9 @@ Every weapon will evolve after a certain amount of souls will be gained and evol
   <li>Click on Code and download the mod branch as a zip or clone the Mod branch in your computer using the HTTP in code using git bash(git clone http)</li>
   <li>Open the game folder usually found in steam at "C:\Program Files (x86)\Steam\steamapps\common\Quake 2" and make a folder for the mod named "mod"</li>
   <li>Extract the zip or open the branch in your computer</li>
-  <li>Copy the files inside the folder in the zip or branch named "customMod" and put them inside your mod folder</li>
+  <li>Copy the files inside the folder "Adds" in the zip or branch named "customMod" and put them inside your mod folder</li>
   <li>Rightclick on any of the two quake2shorcuts and go to properties</li>
   <li>Replace the path that is in quotations in both 'target' and 'start in' with the path of your quake 2 exe(target) and folder(start in) for each</li>
+  <li>Remember to open the sln (in customMod) with visual studio and compile game, find the output file gamex86.dll and put inside mod and open shortcut</li>
 </ol>
 

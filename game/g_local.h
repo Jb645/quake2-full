@@ -932,6 +932,7 @@ typedef struct
 	//Gluttony Mod
 	gluttonyState sword, spear, hammer, superHammer, daggers, ballista, superBallista, canon, fireball, mageHand, shield, reflect;
 	enum  WeaponEvolutionStage weapon_melee, weapon_ranged, weapon_magic;
+	qboolean reflectActive, critActive;
 	int playersouls;
 	qboolean showSoulAllocation;
 	qboolean showHelpModMenu;

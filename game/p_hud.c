@@ -714,6 +714,11 @@ char* single_statusbar2 =
 "	yb	-50 "
 "endif "
 
+// reflect warning			// New
+
+
+
+
 // timer
 "if 9 "
 "	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
@@ -728,6 +733,19 @@ char* single_statusbar2 =
 "if 11 "
 "	xv	148 "
 "	pic	11 "
+"endif "
+
+"if 18 "			// New. If STAT_XP_ICON is not zero, then do
+"	yv	0 "		// New  //controls y position of string
+"	xv	0 "		// New  //controls x position of string
+"	string \"Reflect Active\" "		// New. Display icon
+"endif "
+
+// crit warning			// New
+"if 19"
+"	yv	10 "		// New  //controls y position of string
+"	xv	0 "		// New  //controls x position of string
+"	string \"Crit!\" "		// New. Display icon
 "endif "
 ;
 
@@ -852,6 +870,17 @@ void G_SetSoulAllocationScreen(edict_t* ent) {
 		ent->client->ps.stats[STAT_XP_ICON] = 0;
 		ent->client->ps.stats[STAT_XP] = 0;
 		ent->client->ps.stats[STAT_SCREEN] = 0;
+
+		if (ent->client->pers.reflectActive)
+			ent->client->ps.stats[STAT_XP_ICON] = 1;
+		else
+			ent->client->ps.stats[STAT_XP_ICON] = 0;
+
+		if (ent->client->pers.critActive)
+			ent->client->ps.stats[STAT_XP] = 1;
+		else
+			ent->client->ps.stats[STAT_XP] = 0;
+
 
 		gi.configstring(CS_STATUSBAR, single_statusbar2);
 		

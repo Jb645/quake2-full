@@ -37,7 +37,21 @@ void Weapon_Railgun (edict_t *ent);
 void Weapon_BFG (edict_t *ent);
 
 //Gluttony Mod
+//melee
 void weapon_Sword(edict_t* ent);
+void weapon_Spear(edict_t* ent);
+void weapon_Hammer(edict_t* ent);
+void weapon_SPHammer(edict_t* ent);
+//ranged
+void weapon_Dagger(edict_t* ent);
+void Weapon_Ballista(edict_t* ent);
+void Weapon_SPBallista(edict_t* ent);
+void weapon_Canon(edict_t* ent);
+//magic
+void Weapon_FireBall(edict_t* ent);
+void Weapon_MageHand(edict_t* ent);
+void Weapon_Shield(edict_t* ent);
+void Weapon_Reflect(edict_t* ent);
 //Gluttony Mod End
 
 gitem_armor_t jacketarmor_info	= { 25,  50, .30, .00, ARMOR_JACKET};
@@ -1581,12 +1595,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		weapon_Spear,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		"w_sword",		//Icon used
 		"Spear",		//Pickup Name
 		0,
 		0,
@@ -1604,12 +1618,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		weapon_Hammer,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		"w_sword",		//Icon used
 		"Hammer",		//Pickup Name
 		0,
 		0,
@@ -1627,12 +1641,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		weapon_SPHammer,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		"w_sword",		//Icon used
 		"SPHammer",		//Pickup Name
 		0,
 		0,
@@ -1653,7 +1667,7 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,
 		NULL,
-		Weapon_Blaster,
+		weapon_Dagger,
 		"misc/w_pkup.wav",
 		NULL, 0,
 		NULL,
@@ -1676,12 +1690,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		Weapon_Ballista,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
-		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		NULL, //model
+		"w_daggers",		//Icon used
 		"Ballista",		//Pickup Name
 		0,
 		0,
@@ -1699,12 +1713,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		Weapon_SPBallista,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
-		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		NULL, //model
+		"w_daggers",		//Icon used
 		"SPBallista",		//Pickup Name
 		0,
 		0,
@@ -1721,12 +1735,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		weapon_Canon,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
-		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		NULL, //model
+		"w_daggers",		//Icon used
 		"Cannon",		//Pickup Name
 		0,
 		0,
@@ -1747,7 +1761,7 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		Weapon_RocketLauncher,		//what function it is
+		Weapon_FireBall ,		//what function it is
 		"misc.w_pkup.wav",
 		NULL, 0,
 		NULL,//model
@@ -1773,7 +1787,7 @@ always owned, never in the world*/
 		"misc/am_pkup.wav",
 		"models/items/ammo/rockets/medium/tris.md2", 0,
 		NULL,
-		/* icon */		"a_rockets",
+		/* icon */		"w_fireball",
 		/* pickup */	"FireBalls",
 		/* width */		1,
 				20,
@@ -1792,12 +1806,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		Weapon_MageHand,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		"w_fireball",		//Icon used
 		"MageHand",		//Pickup Name
 		0,
 		0,
@@ -1815,12 +1829,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		Weapon_Shield,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		"w_fireball",		//Icon used
 		"Shield",		//Pickup Name
 		0,
 		0,
@@ -1837,12 +1851,12 @@ always owned, never in the world*/
 		NULL,
 		Use_Weapon,			//How to use
 		NULL,
-		weapon_Sword,		//what function it is
+		Weapon_Reflect,		//what function it is
 		"misc.w_pkup.wav",
 		NULL,
 		0,
 		"models/weapons/v_blast/tris.md2", //model
-		"w_blaster",		//Icon used
+		"w_fireball",		//Icon used
 		"Reflect",		//Pickup Name
 		0,
 		0,

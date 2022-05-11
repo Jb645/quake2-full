@@ -865,7 +865,7 @@ void Weapon_Blaster (edict_t *ent)
 {
 	static int	pause_frames[]	= {19, 32, 0};
 	static int	fire_frames[]	= {5, 0};
-
+	
 	Weapon_Generic (ent, 4, 8, 52, 55, pause_frames, fire_frames, Weapon_Blaster_Fire);
 }
 
@@ -1434,6 +1434,8 @@ void Weapon_BFG (edict_t *ent)
 
 	Weapon_Generic (ent, 8, 32, 55, 58, pause_frames, fire_frames, weapon_bfg_fire);
 }
-#include "g_highln.h"
+#include "g_melee.h"
+#include "g_ranged.h"
+#include "g_magic.h"
 
 //======================================================================

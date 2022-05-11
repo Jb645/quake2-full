@@ -733,7 +733,8 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.maxHPMultiplier = 1;
 	client->pers.soulgainMultiplier = 1;
 
-
+	//reflect
+	client->pers.reflectActive = false;
 
 
 	//Gluttony Mod End

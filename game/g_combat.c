@@ -378,6 +378,13 @@ qboolean CheckTeamDamage (edict_t *targ, edict_t *attacker)
 	return false;
 }
 
+//GLutony
+//void CritDisplay(edict_t* ent) {
+//	gclient_t* cl = ent->client;
+//	cl->pers.critActive = !(cl->pers.critActive);
+//	ent->client->ps.gunframe++;
+//}
+
 void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir, vec3_t point, vec3_t normal, int damage, int knockback, int dflags, int mod)
 {
 	gclient_t	*client;
@@ -501,17 +508,35 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 					take*= attacker->client->pers.critDamage;
 					targ->health = targ->health - (take);
 					gi.bprintf(PRINT_HIGH, "CRIT DAMAGE\n");
+					attacker->client->pers.critActive = true;
 				}
 				else {
 					take *= attacker->client->pers.baseDamageMultiplier;
 					targ->health = targ->health - (take);
+					attacker->client->pers.critActive = false;
 				}
 				
 			}
 			
 		}
 		else {
-			targ->health = targ->health - take;
+			if (targ->client->pers.reflectActive) {
+				if ((attacker->svflags & SVF_MONSTER) || (client))
+					SpawnDamage(TE_BLOOD, point, normal, take);
+				attacker->health = attacker->health - (take* targ->client->pers.baseDamageMultiplier);
+				gi.bprintf(PRINT_HIGH, "attacker health: %i| take: -%i\n", attacker->health, take);
+				if (attacker->health <= 0)
+				{
+					if ((attacker->svflags & SVF_MONSTER) || (client))
+						attacker->flags |= FL_NO_KNOCKBACK;
+					Killed(attacker, inflictor, targ, take, point);
+					return;
+				}
+			}
+			else {
+				targ->health = targ->health - take;
+				targ->client->pers.critActive = false;//to make it dissapear on hit
+			}
 		}
 		
 		gi.bprintf(PRINT_HIGH, "%i\n",targ->health);

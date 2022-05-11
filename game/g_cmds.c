@@ -936,6 +936,13 @@ void Cmd_SoulSetUp_f(edict_t* ent) {
 	}
 }
 
+void Cmd_GainSouls_f(edict_t* ent) {
+	gclient_t* cl;
+	cl = ent->client;
+	cl->pers.playersouls += 50;
+	gi.bprintf(PRINT_MEDIUM, "+50 souls\n");
+}
+
 void Cmd_HelpModMenu_f(edict_t* ent) {
 	gclient_t* cl;
 	cl = ent->client;
@@ -1046,6 +1053,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 		gitem_t* item;
 		item = "";
 
+
 		/*int randomNumber = 10 * random();
 		float randomNumberC = 10 * crandom();
 		gi.bprintf(PRINT_HIGH, "random: %i cRandom: %f\n", randomNumber, randomNumberC);
@@ -1087,6 +1095,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 							break;
 						case MELEEUNLOCK:
 							if (ent->client->pers.weapon_melee < STAGE4) {
+								cl->pers.playersouls -= 1;
 								ent->client->pers.weapon_melee++;
 								switch (ent->client->pers.weapon_melee)
 								{
@@ -1109,6 +1118,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 							break;
 						case RANGEDUNLOCK:
 							if (ent->client->pers.weapon_ranged < STAGE4) {
+								cl->pers.playersouls -= 1;
 								ent->client->pers.weapon_ranged++;
 									switch (ent->client->pers.weapon_ranged)
 									{
@@ -1130,6 +1140,7 @@ void BuyUpgrade(edict_t * ent, int cost, enum AttributeState attribute, enum Pla
 							break;
 						case MAGICUNLOCK:
 							if (ent->client->pers.weapon_magic < STAGE4){
+									cl->pers.playersouls -= 1;
 									ent->client->pers.weapon_magic++;
 									switch (ent->client->pers.weapon_magic)
 									{
@@ -1334,6 +1345,10 @@ void ClientCommand (edict_t *ent)
 
 	if (Q_stricmp(cmd, "soulAllocationMenu") == 0) {
 		Cmd_SoulSetUp_f(ent);
+		return;
+	}
+	if (Q_stricmp(cmd, "S") ==0){
+		Cmd_GainSouls_f(ent);
 		return;
 	}
 	if (Q_stricmp(cmd, "helpModMenu") == 0) {
